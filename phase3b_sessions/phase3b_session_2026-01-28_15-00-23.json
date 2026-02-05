@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-01-28 15:00:23",
+  "phase": "3b_realtime_mic",
+  "architecture": "Mic \u2192 ASR \u2192 MT \u2192 QE \u2192 TTS",
+  "target_language": "es",
+  "num_recordings": 2,
+  "total_session_time_sec": 44.71800208091736,
+  "model_loads_sec": {
+    "asr": 2.9255151748657227,
+    "mt": 14.25207233428955,
+    "qe": 15.769020557403564,
+    "total": 32.94660806655884
+  },
+  "recordings": []
+}

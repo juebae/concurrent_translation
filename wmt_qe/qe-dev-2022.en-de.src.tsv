@@ -1,0 +1,10 @@
+The cat sat on the mat.
+She went to the market yesterday.
+I like reading books in the evening.
+The weather forecast predicts rain tomorrow.
+He works as a software engineer.
+They are planning a vacation next month.
+This sentence is intentionally very long and contains multiple clauses to test tokenization limits during fine-tuning.
+Machine translation quality estimation is crucial for deployment.
+Neural networks require large amounts of training data.
+The quick brown fox jumps over the lazy dog.

@@ -1,0 +1,74 @@
+{
+  "timestamp": "2026-01-29 19:39:16",
+  "phase": "3b_realtime_mic",
+  "architecture": "Mic \u2192 ASR \u2192 MT \u2192 QE \u2192 TTS",
+  "target_language": "es",
+  "num_recordings": 2,
+  "total_session_time_sec": 91.11482191085815,
+  "model_loads_sec": {
+    "asr": 2.9837539196014404,
+    "mt": 14.395809650421143,
+    "qe": 19.752888679504395,
+    "total": 37.13245224952698
+  },
+  "recordings": [
+    {
+      "recording_id": 1,
+      "audio_duration_sec": 14.4,
+      "num_sentences": 5,
+      "pipeline_time_ms": 47491.44625663757,
+      "results": [
+        {
+          "sentence_id": 1,
+          "source": "This one should record for 10 seconds, ID and D 1000",
+          "target": "Este debe grabar durante 10 segundos, ID y D 1000",
+          "mt_time_ms": 7508.29815864563,
+          "qe_score": 0.8522071474650614,
+          "qe_time_ms": 1628.4477710723877,
+          "tts_time_ms": 4150.193691253662,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 2,
+          "source": "So this test",
+          "target": "As\u00ed que esta prueba",
+          "mt_time_ms": 3695.661783218384,
+          "qe_score": 0.7723390053908498,
+          "qe_time_ms": 1118.3650493621826,
+          "tts_time_ms": 1809.2989921569824,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 3,
+          "source": "I'm only about the translation or even listening",
+          "target": "Soy s\u00f3lo acerca de la traducci\u00f3n o incluso escuchar",
+          "mt_time_ms": 6859.519004821777,
+          "qe_score": 0.8224996161443938,
+          "qe_time_ms": 1568.1440830230713,
+          "tts_time_ms": 3681.6835403442383,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 4,
+          "source": "This one should just be 4 10 seconds",
+          "target": "Esta deber\u00eda ser de 4 10 segundos.",
+          "mt_time_ms": 5748.682260513306,
+          "qe_score": 0.7862361591893045,
+          "qe_time_ms": 1369.861125946045,
+          "tts_time_ms": 3179.995536804199,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 5,
+          "source": "No",
+          "target": "No",
+          "mt_time_ms": 3089.331865310669,
+          "qe_score": 0.9999999999674833,
+          "qe_time_ms": 971.6870784759521,
+          "tts_time_ms": 1036.2968444824219,
+          "audio_played": true
+        }
+      ]
+    }
+  ]
+}

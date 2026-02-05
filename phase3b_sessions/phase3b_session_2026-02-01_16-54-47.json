@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-02-01 16:54:47",
+  "phase": "3b_realtime_mic",
+  "architecture": "Mic \u2192 ASR \u2192 MT \u2192 QE \u2192 TTS",
+  "target_language": "es",
+  "num_recordings": 2,
+  "total_session_time_sec": 36.81461191177368,
+  "model_loads_sec": {
+    "asr": 3.093099355697632,
+    "mt": 14.189953804016113,
+    "qe": 15.809876203536987,
+    "total": 33.09292936325073
+  },
+  "recordings": [
+    {
+      "recording_id": 1,
+      "audio_duration_sec": 2.048,
+      "num_sentences": 1,
+      "pipeline_time_ms": 5233.81233215332,
+      "results": [
+        {
+          "sentence_id": 1,
+          "source": "I know",
+          "target": "Lo s\u00e9.",
+          "mt_time_ms": 2698.039770126343,
+          "qe_score": 0.6702689203347854,
+          "qe_time_ms": 1160.367727279663,
+          "tts_time_ms": 1296.0889339447021,
+          "audio_played": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "timestamp": "2026-01-28 15:14:37",
+  "phase": "3b_realtime_mic",
+  "architecture": "Mic \u2192 ASR \u2192 MT \u2192 QE \u2192 TTS",
+  "target_language": "es",
+  "num_recordings": 2,
+  "total_session_time_sec": 227.65443563461304,
+  "model_loads_sec": {
+    "asr": 2.8895294666290283,
+    "mt": 14.325393676757812,
+    "qe": 15.926439762115479,
+    "total": 33.14136290550232
+  },
+  "recordings": [
+    {
+      "recording_id": 1,
+      "audio_duration_sec": 42.496,
+      "num_sentences": 15,
+      "pipeline_time_ms": 128800.20093917847,
+      "results": [
+        {
+          "sentence_id": 1,
+          "source": "Ah, he's the worst dude",
+          "target": "Ah, es el peor tipo.",
+          "mt_time_ms": 4180.976629257202,
+          "qe_score": 0.7003877241545167,
+          "qe_time_ms": 1322.5579261779785,
+          "tts_time_ms": 2179.9447536468506,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 2,
+          "source": "Oh, it's amazing too",
+          "target": "Oh, tambi\u00e9n es incre\u00edble.",
+          "mt_time_ms": 3694.948196411133,
+          "qe_score": 0.6803143032723458,
+          "qe_time_ms": 1289.5991802215576,
+          "tts_time_ms": 2248.4543323516846,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 3,
+          "source": "Oh, okay, we're gonna have to pick each other",
+          "target": "Oh, est\u00e1 bien, vamos a tener que elegirnos el uno al otro",
+          "mt_time_ms": 8046.747446060181,
+          "qe_score": 0.8184150192764126,
+          "qe_time_ms": 1665.8523082733154,
+          "tts_time_ms": 3890.697956085205,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 4,
+          "source": "It's very slang",
+          "target": "Es muy argot.",
+          "mt_time_ms": 4318.799257278442,
+          "qe_score": 0.6688003056253886,
+          "qe_time_ms": 1199.4318962097168,
+          "tts_time_ms": 1636.8403434753418,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 5,
+          "source": "It's gonna be all that wrong",
+          "target": "Todo va a estar mal.",
+          "mt_time_ms": 4186.766147613525,
+          "qe_score": 0.7274757204328163,
+          "qe_time_ms": 1243.880033493042,
+          "tts_time_ms": 1886.199951171875,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 6,
+          "source": "That's me and that's fine",
+          "target": "Ese soy yo y est\u00e1 bien.",
+          "mt_time_ms": 4692.123174667358,
+          "qe_score": 0.7064218969895221,
+          "qe_time_ms": 1286.3802909851074,
+          "tts_time_ms": 2131.159543991089,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 7,
+          "source": "JBV, I think he's talking about his comping here",
+          "target": "JBV, creo que est\u00e1 hablando de su competencia aqu\u00ed.",
+          "mt_time_ms": 7087.583303451538,
+          "qe_score": 0.7408103846252292,
+          "qe_time_ms": 1584.4612121582031,
+          "tts_time_ms": 4029.1051864624023,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 8,
+          "source": "Which I'm knowing",
+          "target": "Lo cual estoy sabiendo.",
+          "mt_time_ms": 2942.7080154418945,
+          "qe_score": 0.7203501982573401,
+          "qe_time_ms": 1222.480297088623,
+          "tts_time_ms": 2002.249002456665,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 9,
+          "source": "He's just gonna show for another 5 seconds",
+          "target": "Va a aparecer por otros 5 segundos.",
+          "mt_time_ms": 5077.722787857056,
+          "qe_score": 0.7662159428253954,
+          "qe_time_ms": 1356.1327457427979,
+          "tts_time_ms": 2885.1523399353027,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 10,
+          "source": "We're gonna have 20 comping seconds",
+          "target": "Vamos a tener 20 segundos comping",
+          "mt_time_ms": 4643.983364105225,
+          "qe_score": 0.8364668128507803,
+          "qe_time_ms": 1308.6159229278564,
+          "tts_time_ms": 2775.085687637329,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 11,
+          "source": "And then it has to pick up",
+          "target": "Y luego tiene que recoger",
+          "mt_time_ms": 3687.9422664642334,
+          "qe_score": 0.7839983876791214,
+          "qe_time_ms": 1218.590497970581,
+          "tts_time_ms": 2142.0183181762695,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 12,
+          "source": "So, I should just chunk you up and try and transfer it to a different way",
+          "target": "Por lo tanto, deber\u00eda cortarte y tratar de transferirlo de una manera diferente.",
+          "mt_time_ms": 8877.778768539429,
+          "qe_score": 0.7527804652396068,
+          "qe_time_ms": 1815.1404857635498,
+          "tts_time_ms": 4887.877941131592,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 13,
+          "source": "Oh, good",
+          "target": "Oh, bien.",
+          "mt_time_ms": 2452.749252319336,
+          "qe_score": 0.8397357111126185,
+          "qe_time_ms": 1019.1514492034912,
+          "tts_time_ms": 1512.1142864227295,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 14,
+          "source": "That's nice",
+          "target": "Eso est\u00e1 bien.",
+          "mt_time_ms": 2471.200704574585,
+          "qe_score": 0.7216440835600191,
+          "qe_time_ms": 1132.2176456451416,
+          "tts_time_ms": 1622.9405403137207,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 15,
+          "source": "You ask it to pick it up",
+          "target": "P\u00eddele que lo recoja.",
+          "mt_time_ms": 4758.518218994141,
+          "qe_score": 0.7140579950290731,
+          "qe_time_ms": 1280.353307723999,
+          "tts_time_ms": 1878.8111209869385,
+          "audio_played": true
+        }
+      ]
+    }
+  ]
+}

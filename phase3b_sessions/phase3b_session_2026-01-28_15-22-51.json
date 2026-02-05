@@ -1,0 +1,114 @@
+{
+  "timestamp": "2026-01-28 15:22:51",
+  "phase": "3b_realtime_mic",
+  "architecture": "Mic \u2192 ASR \u2192 MT \u2192 QE \u2192 TTS",
+  "target_language": "es",
+  "num_recordings": 2,
+  "total_session_time_sec": 209.23703169822693,
+  "model_loads_sec": {
+    "asr": 2.941850185394287,
+    "mt": 14.204306364059448,
+    "qe": 15.826005935668945,
+    "total": 32.97216248512268
+  },
+  "recordings": [
+    {
+      "recording_id": 1,
+      "audio_duration_sec": 41.024,
+      "num_sentences": 9,
+      "pipeline_time_ms": 114836.96699142456,
+      "results": [
+        {
+          "sentence_id": 1,
+          "source": "Okay, yes, first answer my friend",
+          "target": "Vale, s\u00ed, primero responde a mi amigo.",
+          "mt_time_ms": 5134.098529815674,
+          "qe_score": 0.7538553124150977,
+          "qe_time_ms": 1454.8792839050293,
+          "tts_time_ms": 3150.029182434082,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 2,
+          "source": "I'm not going to call them",
+          "target": "No voy a llamarlos.",
+          "mt_time_ms": 3435.3320598602295,
+          "qe_score": 0.783574888249118,
+          "qe_time_ms": 1270.9388732910156,
+          "tts_time_ms": 1737.0107173919678,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 3,
+          "source": "My name is Jub\u00e9 Agm\u00e9le for the group",
+          "target": "Mi nombre es Jub\u00e9 Agm\u00e9le para el grupo",
+          "mt_time_ms": 6170.461893081665,
+          "qe_score": 0.880796304882393,
+          "qe_time_ms": 1528.292179107666,
+          "tts_time_ms": 2753.8809776306152,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 4,
+          "source": "Get that right please",
+          "target": "Haz eso bien, por favor.",
+          "mt_time_ms": 3874.584436416626,
+          "qe_score": 0.7327738632288586,
+          "qe_time_ms": 1249.7479915618896,
+          "tts_time_ms": 2368.8039779663086,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 5,
+          "source": "I have got a calipagus, which is very embond point",
+          "target": "Tengo un califagus, que es un punto muy empedernido.",
+          "mt_time_ms": 9129.920244216919,
+          "qe_score": 0.7751395449522254,
+          "qe_time_ms": 1706.204891204834,
+          "tts_time_ms": 3872.4892139434814,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 6,
+          "source": "The pavilion of the Palei, Poda, Valeton in Arian, the Guedemaine, Cantel, Estovation and Mirmidium",
+          "target": "El pabell\u00f3n de los Palei, Poda, Valeton en Arian, la Guedemaine, Cantel, Estovation y Mirmidium",
+          "mt_time_ms": 16140.671253204346,
+          "qe_score": 0.924755883281168,
+          "qe_time_ms": 2665.327548980713,
+          "tts_time_ms": 6504.842758178711,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 7,
+          "source": "My name is Jub\u00e9 Agm\u00e9le, I am testing to see if you translate and pick on things properly",
+          "target": "Mi nombre es Jub\u00e9 Agm\u00e9le, estoy probando para ver si traduces y eliges las cosas correctamente.",
+          "mt_time_ms": 10958.447933197021,
+          "qe_score": 0.8459318748849117,
+          "qe_time_ms": 2347.227096557617,
+          "tts_time_ms": 6012.604475021362,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 8,
+          "source": "Please work otherwise I'll send you to the health work please",
+          "target": "Por favor, trabaja de lo contrario, te enviar\u00e9 al trabajo de salud, por favor.",
+          "mt_time_ms": 9539.36243057251,
+          "qe_score": 0.7797173887990496,
+          "qe_time_ms": 1873.3937740325928,
+          "tts_time_ms": 5261.907339096069,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 9,
+          "source": "Please",
+          "target": "Por favor.",
+          "mt_time_ms": 2275.257349014282,
+          "qe_score": 0.6553359428452621,
+          "qe_time_ms": 984.9274158477783,
+          "tts_time_ms": 1356.919527053833,
+          "audio_played": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+# ====== JETSON NANO (JetPack 4.6, Python 3.6) TESTED VERSIONS ======
+
+# PyTorch (install via wheel separately, max for Python 3.6)
+# torch==1.10.0  # Install from NVIDIA wheel first
+
+# NLP & Core ML (latest that support Python 3.6)
+transformers==4.18.0
+# datasets==2.4.0  # Removed - causes conflicts on Nano
+
+# ONNX (for model export & quantization)
+onnx==1.9.0
+onnxruntime==1.10.0
+
+# Audio (versions that support Python 3.6)
+scipy==1.5.4
+# librosa==0.9.2  # Last version supporting Python 3.6 (optional)
+soundfile==0.10.3.post1
+
+# Utilities
+numpy==1.19.5
+psutil==5.9.6
+pyyaml==6.0
+
+# Speech synthesis (may not work on Nano - test separately)
+# piper-tts==1.2.0  # Removed - check compatibility
+
+# Speech recognition (Whisper - test with latest)
+# openai-whisper==20231106  # May work, test separately

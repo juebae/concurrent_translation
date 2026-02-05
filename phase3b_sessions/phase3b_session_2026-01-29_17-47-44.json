@@ -1,0 +1,432 @@
+{
+  "timestamp": "2026-01-29 17:47:44",
+  "phase": "3b_realtime_mic",
+  "architecture": "Mic \u2192 ASR \u2192 MT \u2192 QE \u2192 TTS",
+  "target_language": "es",
+  "num_recordings": 3,
+  "total_session_time_sec": 880.5952353477478,
+  "model_loads_sec": {
+    "asr": 3.104890823364258,
+    "mt": 14.235370874404907,
+    "qe": 17.983433961868286,
+    "total": 35.32369565963745
+  },
+  "recordings": [
+    {
+      "recording_id": 1,
+      "audio_duration_sec": 35.456,
+      "num_sentences": 7,
+      "pipeline_time_ms": 93698.93169403076,
+      "results": [
+        {
+          "sentence_id": 1,
+          "source": "Okay, it seems to work again now for some reason",
+          "target": "Vale, parece que ahora funciona de nuevo por alguna raz\u00f3n",
+          "mt_time_ms": 7856.783628463745,
+          "qe_score": 0.8193371306983119,
+          "qe_time_ms": 1616.2245273590088,
+          "tts_time_ms": 4151.895761489868,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 2,
+          "source": "I'm not complaining, but I'm a wife",
+          "target": "No me quejo, pero soy esposa.",
+          "mt_time_ms": 7266.384840011597,
+          "qe_score": 0.7918037616452664,
+          "qe_time_ms": 1593.5544967651367,
+          "tts_time_ms": 2370.9216117858887,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 3,
+          "source": "It's still going, but I don't know if it's because it's picking up my audio",
+          "target": "Todav\u00eda est\u00e1 en marcha, pero no s\u00e9 si es porque est\u00e1 captando mi audio",
+          "mt_time_ms": 9913.671731948853,
+          "qe_score": 0.8058018331577779,
+          "qe_time_ms": 2101.3617515563965,
+          "tts_time_ms": 4618.027448654175,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 4,
+          "source": "Or, if it's picking up the thing in the background",
+          "target": "O, si est\u00e1 recogiendo la cosa en el fondo",
+          "mt_time_ms": 6455.130815505981,
+          "qe_score": 0.8184356014183076,
+          "qe_time_ms": 1647.688865661621,
+          "tts_time_ms": 3240.5612468719482,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 5,
+          "source": "I think it is picking up the background and that's fine",
+          "target": "Creo que est\u00e1 recogiendo el fondo y eso est\u00e1 bien.",
+          "mt_time_ms": 7035.350322723389,
+          "qe_score": 0.7675913534340706,
+          "qe_time_ms": 1718.0545330047607,
+          "tts_time_ms": 3492.5529956817627,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 6,
+          "source": "As long as this thing works and the two runs happen, I'm good",
+          "target": "Mientras esto funcione y las dos carreras sucedan, estoy bien.",
+          "mt_time_ms": 8190.4730796813965,
+          "qe_score": 0.7556797771172623,
+          "qe_time_ms": 1869.6069717407227,
+          "tts_time_ms": 4373.843193054199,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 7,
+          "source": "Because these things then I can show full of two runs happening",
+          "target": "Porque estas cosas entonces puedo mostrar lleno de dos carreras sucediendo",
+          "mt_time_ms": 7494.57573890686,
+          "qe_score": 0.7637614049990934,
+          "qe_time_ms": 1716.5718078613281,
+          "tts_time_ms": 4891.46089553833,
+          "audio_played": true
+        }
+      ]
+    },
+    {
+      "recording_id": 2,
+      "audio_duration_sec": 209.984,
+      "num_sentences": 33,
+      "pipeline_time_ms": 308776.56507492065,
+      "results": [
+        {
+          "sentence_id": 1,
+          "source": "Okay, it seems to work again now for some reason",
+          "target": "Vale, parece que ahora funciona de nuevo por alguna raz\u00f3n",
+          "mt_time_ms": 8162.380695343018,
+          "qe_score": 0.8193371306983119,
+          "qe_time_ms": 1609.0660095214844,
+          "tts_time_ms": 3880.322217941284,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 2,
+          "source": "I'm not complaining, but I'm a wife",
+          "target": "No me quejo, pero soy esposa.",
+          "mt_time_ms": 7508.262872695923,
+          "qe_score": 0.7918037616452664,
+          "qe_time_ms": 1571.3427066802979,
+          "tts_time_ms": 2380.418300628662,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 3,
+          "source": "It's still going, but I don't know if it's because it's picking up my audio",
+          "target": "Todav\u00eda est\u00e1 en marcha, pero no s\u00e9 si es porque est\u00e1 captando mi audio",
+          "mt_time_ms": 10637.1169090271,
+          "qe_score": 0.8058018331577779,
+          "qe_time_ms": 2201.8747329711914,
+          "tts_time_ms": 4637.643337249756,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 4,
+          "source": "Or, if it's picking up the thing in the background",
+          "target": "O, si est\u00e1 recogiendo la cosa en el fondo",
+          "mt_time_ms": 7198.0578899383545,
+          "qe_score": 0.8184356014183076,
+          "qe_time_ms": 1794.5523262023926,
+          "tts_time_ms": 3254.4610500335693,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 5,
+          "source": "I think it is picking up the background and that's fine",
+          "target": "Creo que est\u00e1 recogiendo el fondo y eso est\u00e1 bien.",
+          "mt_time_ms": 7491.443872451782,
+          "qe_score": 0.7675913534340706,
+          "qe_time_ms": 1762.6385688781738,
+          "tts_time_ms": 3515.19775390625,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 6,
+          "source": "As long as this thing works and the two runs happen, I'm good",
+          "target": "Mientras esto funcione y las dos carreras sucedan, estoy bien.",
+          "mt_time_ms": 8714.335203170776,
+          "qe_score": 0.7556797771172623,
+          "qe_time_ms": 1878.2527446746826,
+          "tts_time_ms": 4389.722108840942,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 7,
+          "source": "Because these days I can show proof of two runs happening and the result being saved",
+          "target": "Porque en estos d\u00edas puedo mostrar la prueba de dos carreras sucediendo y el resultado siendo salvado",
+          "mt_time_ms": 11569.314956665039,
+          "qe_score": 0.7864019880533373,
+          "qe_time_ms": 2056.520700454712,
+          "tts_time_ms": 6153.538703918457,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 8,
+          "source": "Why not",
+          "target": "\u00bfPor qu\u00e9 no?",
+          "mt_time_ms": 4139.587163925171,
+          "qe_score": 0.7734693072198269,
+          "qe_time_ms": 1127.6485919952393,
+          "tts_time_ms": 1373.206615447998,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 9,
+          "source": "I didn't put into",
+          "target": "Yo no puse en",
+          "mt_time_ms": 4535.423517227173,
+          "qe_score": 0.7831609718048496,
+          "qe_time_ms": 1314.6510124206543,
+          "tts_time_ms": 1642.0037746429443,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 10,
+          "source": "I did put him to, so I should laugh because I don't go over again",
+          "target": "Lo puse a \u00e9l, as\u00ed que deber\u00eda re\u00edrme porque no voy otra vez.",
+          "mt_time_ms": 10445.67084312439,
+          "qe_score": 0.7846896458945689,
+          "qe_time_ms": 2124.140501022339,
+          "tts_time_ms": 4008.755683898926,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 11,
+          "source": "I'm not sure if I can do it",
+          "target": "No estoy seguro si puedo hacerlo.",
+          "mt_time_ms": 5716.328144073486,
+          "qe_score": 0.7692528651725254,
+          "qe_time_ms": 1457.51953125,
+          "tts_time_ms": 2501.208543777466,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 12,
+          "source": "I'm not sure if I can do it",
+          "target": "No estoy seguro si puedo hacerlo.",
+          "mt_time_ms": 5720.192432403564,
+          "qe_score": 0.7692528651725254,
+          "qe_time_ms": 1443.0673122406006,
+          "tts_time_ms": 2495.2874183654785,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 13,
+          "source": "I'm not sure if I can do it",
+          "target": "No estoy seguro si puedo hacerlo.",
+          "mt_time_ms": 5680.003881454468,
+          "qe_score": 0.7692528651725254,
+          "qe_time_ms": 1471.5631008148193,
+          "tts_time_ms": 2494.0741062164307,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 14,
+          "source": "I'm not sure if I can do it",
+          "target": "No estoy seguro si puedo hacerlo.",
+          "mt_time_ms": 5693.4545040130615,
+          "qe_score": 0.7692528651725254,
+          "qe_time_ms": 1443.852186203003,
+          "tts_time_ms": 2501.400947570801,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 15,
+          "source": "That's fine",
+          "target": "Est\u00e1 bien.",
+          "mt_time_ms": 3301.616430282593,
+          "qe_score": 0.704044391048824,
+          "qe_time_ms": 1167.46187210083,
+          "tts_time_ms": 1366.4777278900146,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 16,
+          "source": "That's fine",
+          "target": "Est\u00e1 bien.",
+          "mt_time_ms": 3310.3179931640625,
+          "qe_score": 0.704044391048824,
+          "qe_time_ms": 1177.7904033660889,
+          "tts_time_ms": 1369.0130710601807,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 17,
+          "source": "That's fine",
+          "target": "Est\u00e1 bien.",
+          "mt_time_ms": 3357.4788570404053,
+          "qe_score": 0.704044391048824,
+          "qe_time_ms": 1163.0158424377441,
+          "tts_time_ms": 1371.6952800750732,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 18,
+          "source": "That's fine",
+          "target": "Est\u00e1 bien.",
+          "mt_time_ms": 3257.0395469665527,
+          "qe_score": 0.704044391048824,
+          "qe_time_ms": 1108.7496280670166,
+          "tts_time_ms": 1374.3417263031006,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 19,
+          "source": "That's fine",
+          "target": "Est\u00e1 bien.",
+          "mt_time_ms": 3409.9810123443604,
+          "qe_score": 0.704044391048824,
+          "qe_time_ms": 1189.220905303955,
+          "tts_time_ms": 1375.5650520324707,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 20,
+          "source": "Someone's been Spanish, but that's correct",
+          "target": "Alguien ha sido espa\u00f1ol, pero eso es correcto.",
+          "mt_time_ms": 7124.606370925903,
+          "qe_score": 0.7965936865300264,
+          "qe_time_ms": 1662.1670722961426,
+          "tts_time_ms": 3371.462106704712,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 21,
+          "source": "That's also what I said that we're happy with the rest of the school",
+          "target": "Eso tambi\u00e9n es lo que dije que estamos contentos con el resto de la escuela.",
+          "mt_time_ms": 10907.898664474487,
+          "qe_score": 0.7995151317884874,
+          "qe_time_ms": 2089.6599292755127,
+          "tts_time_ms": 4760.438442230225,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 22,
+          "source": "That's what I'm talking about",
+          "target": "De eso es de lo que estoy hablando.",
+          "mt_time_ms": 6589.247941970825,
+          "qe_score": 0.7803209682397653,
+          "qe_time_ms": 1536.3006591796875,
+          "tts_time_ms": 2380.2905082702637,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 23,
+          "source": "That's what I'm talking about",
+          "target": "De eso es de lo que estoy hablando.",
+          "mt_time_ms": 6575.968503952026,
+          "qe_score": 0.7803209682397653,
+          "qe_time_ms": 1528.5060405731201,
+          "tts_time_ms": 2384.13405418396,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 24,
+          "source": "That's fine",
+          "target": "Est\u00e1 bien.",
+          "mt_time_ms": 3309.821844100952,
+          "qe_score": 0.704044391048824,
+          "qe_time_ms": 1159.989356994629,
+          "tts_time_ms": 1379.1158199310303,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 25,
+          "source": "That's fine",
+          "target": "Est\u00e1 bien.",
+          "mt_time_ms": 3392.0321464538574,
+          "qe_score": 0.704044391048824,
+          "qe_time_ms": 1164.0923023223877,
+          "tts_time_ms": 1370.2845573425293,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 26,
+          "source": "That's fine",
+          "target": "Est\u00e1 bien.",
+          "mt_time_ms": 3236.7496490478516,
+          "qe_score": 0.704044391048824,
+          "qe_time_ms": 1105.527639389038,
+          "tts_time_ms": 1370.3620433807373,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 27,
+          "source": "That's fine",
+          "target": "Est\u00e1 bien.",
+          "mt_time_ms": 3363.6314868927,
+          "qe_score": 0.704044391048824,
+          "qe_time_ms": 1157.0227146148682,
+          "tts_time_ms": 1369.577407836914,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 28,
+          "source": "That's fine",
+          "target": "Est\u00e1 bien.",
+          "mt_time_ms": 3260.3445053100586,
+          "qe_score": 0.704044391048824,
+          "qe_time_ms": 1119.5273399353027,
+          "tts_time_ms": 1380.5766105651855,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 29,
+          "source": "I did work",
+          "target": "Trabaj\u00e9.",
+          "mt_time_ms": 2774.1379737854004,
+          "qe_score": 0.6817800925979737,
+          "qe_time_ms": 1163.8429164886475,
+          "tts_time_ms": 1251.3740062713623,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 30,
+          "source": "It did work",
+          "target": "Funcion\u00f3.",
+          "mt_time_ms": 3298.9540100097656,
+          "qe_score": 0.7131254895194894,
+          "qe_time_ms": 1096.4200496673584,
+          "tts_time_ms": 1374.9299049377441,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 31,
+          "source": "It did work",
+          "target": "Funcion\u00f3.",
+          "mt_time_ms": 3074.16033744812,
+          "qe_score": 0.7131254895194894,
+          "qe_time_ms": 1140.2053833007812,
+          "tts_time_ms": 1378.1907558441162,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 32,
+          "source": "That's fine",
+          "target": "Est\u00e1 bien.",
+          "mt_time_ms": 3074.2008686065674,
+          "qe_score": 0.704044391048824,
+          "qe_time_ms": 1158.5958003997803,
+          "tts_time_ms": 1469.7225093841553,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 33,
+          "source": "That's fine",
+          "target": "Est\u00e1 bien.",
+          "mt_time_ms": 2955.110788345337,
+          "qe_score": 0.704044391048824,
+          "qe_time_ms": 1115.6978607177734,
+          "tts_time_ms": 1365.5354976654053,
+          "audio_played": true
+        }
+      ]
+    }
+  ]
+}

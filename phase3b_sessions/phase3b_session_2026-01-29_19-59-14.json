@@ -1,0 +1,82 @@
+{
+  "timestamp": "2026-01-29 19:59:14",
+  "phase": "3b_realtime_mic",
+  "architecture": "Mic \u2192 ASR \u2192 MT \u2192 QE \u2192 TTS",
+  "target_language": "es",
+  "num_recordings": 3,
+  "total_session_time_sec": 280.51286125183105,
+  "model_loads_sec": {
+    "asr": 2.9497249126434326,
+    "mt": 14.255799055099487,
+    "qe": 15.837910413742065,
+    "total": 33.043434381484985
+  },
+  "recordings": [
+    {
+      "recording_id": 1,
+      "audio_duration_sec": 56.576,
+      "num_sentences": 3,
+      "pipeline_time_ms": 30448.864459991455,
+      "results": [
+        {
+          "sentence_id": 1,
+          "source": "Okay, it's listening again",
+          "target": "Est\u00e1 bien, est\u00e1 escuchando de nuevo.",
+          "mt_time_ms": 5587.623834609985,
+          "qe_score": 0.7599290123096674,
+          "qe_time_ms": 1541.874647140503,
+          "tts_time_ms": 3026.0512828826904,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 2,
+          "source": "This is the fourth test of today",
+          "target": "Esta es la cuarta prueba de hoy",
+          "mt_time_ms": 6899.56521987915,
+          "qe_score": 0.7540888471435919,
+          "qe_time_ms": 1400.4724025726318,
+          "tts_time_ms": 2391.1261558532715,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 3,
+          "source": "Should translate this v\u1eady",
+          "target": "Deber\u00eda traducir esto.",
+          "mt_time_ms": 6346.418142318726,
+          "qe_score": 0.7322221019177497,
+          "qe_time_ms": 1376.8668174743652,
+          "tts_time_ms": 1876.0757446289062,
+          "audio_played": true
+        }
+      ]
+    },
+    {
+      "recording_id": 2,
+      "audio_duration_sec": 58.368,
+      "num_sentences": 2,
+      "pipeline_time_ms": 20378.772020339966,
+      "results": [
+        {
+          "sentence_id": 1,
+          "source": "What a fuck does it say we caught a little bit of this in seconds",
+          "target": "\u00bfQu\u00e9 carajo dice que cogimos un poco de esto en segundos?",
+          "mt_time_ms": 9295.652151107788,
+          "qe_score": 0.7644926368014852,
+          "qe_time_ms": 1875.9453296661377,
+          "tts_time_ms": 3886.326313018799,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 2,
+          "source": "It did not",
+          "target": "No lo hizo.",
+          "mt_time_ms": 2932.45792388916,
+          "qe_score": 0.7917058812757818,
+          "qe_time_ms": 1125.9889602661133,
+          "tts_time_ms": 1260.5719566345215,
+          "audio_played": true
+        }
+      ]
+    }
+  ]
+}

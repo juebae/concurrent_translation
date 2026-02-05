@@ -1,0 +1,13 @@
+{
+  "phase": "PHASE_2_BASELINE",
+  "description": "Component testing on Nano",
+  "timestamp": "2025-12-12T22:46:55.291571",
+  "metrics": {
+    "asr_latency": 0,
+    "mt_latency": 0,
+    "qe_latency": 0,
+    "tts_latency": 0,
+    "total_parallel": 0,
+    "speedup": 1.0
+  }
+}

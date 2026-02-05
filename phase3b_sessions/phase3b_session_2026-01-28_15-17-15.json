@@ -1,0 +1,74 @@
+{
+  "timestamp": "2026-01-28 15:17:15",
+  "phase": "3b_realtime_mic",
+  "architecture": "Mic \u2192 ASR \u2192 MT \u2192 QE \u2192 TTS",
+  "target_language": "es",
+  "num_recordings": 2,
+  "total_session_time_sec": 96.89570689201355,
+  "model_loads_sec": {
+    "asr": 2.900073289871216,
+    "mt": 14.14985728263855,
+    "qe": 15.821014404296875,
+    "total": 32.87094497680664
+  },
+  "recordings": [
+    {
+      "recording_id": 1,
+      "audio_duration_sec": 17.92,
+      "num_sentences": 5,
+      "pipeline_time_ms": 49844.24948692322,
+      "results": [
+        {
+          "sentence_id": 1,
+          "source": "I'm going to go to the bathroom",
+          "target": "Voy a ir al ba\u00f1o.",
+          "mt_time_ms": 3609.241485595703,
+          "qe_score": 0.7386721202681483,
+          "qe_time_ms": 1565.5968189239502,
+          "tts_time_ms": 1853.8250923156738,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 2,
+          "source": "I'm going to go to the bathroom",
+          "target": "Voy a ir al ba\u00f1o.",
+          "mt_time_ms": 3727.4510860443115,
+          "qe_score": 0.7386721202681483,
+          "qe_time_ms": 1542.900562286377,
+          "tts_time_ms": 1626.0473728179932,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 3,
+          "source": "Bonjour, my name was Al-A-Yu, my name was Yubei Agimofu",
+          "target": "Bonjour, mi nombre era Al-A-Yu, mi nombre era Yubei Agimofu",
+          "mt_time_ms": 12647.661447525024,
+          "qe_score": 0.9531200556543158,
+          "qe_time_ms": 2234.873056411743,
+          "tts_time_ms": 4128.252744674683,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 4,
+          "source": "I got Hela Rimes and I got Beauty",
+          "target": "Tengo a Hela Rimes y a Beauty.",
+          "mt_time_ms": 6514.615297317505,
+          "qe_score": 0.7994317228618026,
+          "qe_time_ms": 1590.2597904205322,
+          "tts_time_ms": 2251.9400119781494,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 5,
+          "source": "I've got a big ass",
+          "target": "Tengo un culo grande.",
+          "mt_time_ms": 3202.1496295928955,
+          "qe_score": 0.7217364415144047,
+          "qe_time_ms": 1400.3536701202393,
+          "tts_time_ms": 1869.5709705352783,
+          "audio_played": true
+        }
+      ]
+    }
+  ]
+}

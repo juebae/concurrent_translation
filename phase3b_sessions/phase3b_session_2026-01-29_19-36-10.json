@@ -1,0 +1,142 @@
+{
+  "timestamp": "2026-01-29 19:36:10",
+  "phase": "3b_realtime_mic",
+  "architecture": "Mic \u2192 ASR \u2192 MT \u2192 QE \u2192 TTS",
+  "target_language": "es",
+  "num_recordings": 3,
+  "total_session_time_sec": 821.7955498695374,
+  "model_loads_sec": {
+    "asr": 3.002354621887207,
+    "mt": 14.382397890090942,
+    "qe": 18.60911464691162,
+    "total": 35.99386715888977
+  },
+  "recordings": [
+    {
+      "recording_id": 1,
+      "audio_duration_sec": 31.168,
+      "num_sentences": 5,
+      "pipeline_time_ms": 72149.53279495239,
+      "results": [
+        {
+          "sentence_id": 1,
+          "source": "Okay, this should keep going for 10 seconds and also should hopefully have understanding to complete these keep fires and start recording at their 2 second month, but I'm a cause that in the second month",
+          "target": "Vale, esto deber\u00eda seguir por 10 segundos y tambi\u00e9n deber\u00eda tener un entendimiento para completar estos fuegos y empezar a grabar en su segundo mes, pero soy una causa que en el segundo mes",
+          "mt_time_ms": 23154.796361923218,
+          "qe_score": 0.823718006708894,
+          "qe_time_ms": 3327.343463897705,
+          "tts_time_ms": 11674.195766448975,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 2,
+          "source": "Normally, warning, that is not good at all",
+          "target": "Normalmente, advertencia, eso no es bueno en absoluto",
+          "mt_time_ms": 8125.063419342041,
+          "qe_score": 0.8276861045992268,
+          "qe_time_ms": 1632.1725845336914,
+          "tts_time_ms": 4027.818441390991,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 3,
+          "source": "God, no memory warning",
+          "target": "Dios, no hay advertencia de memoria",
+          "mt_time_ms": 5237.326383590698,
+          "qe_score": 0.8058291678982672,
+          "qe_time_ms": 1293.4856414794922,
+          "tts_time_ms": 2781.862497329712,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 4,
+          "source": "1 verm",
+          "target": "1 verm",
+          "mt_time_ms": 3119.392156600952,
+          "qe_score": 0.9999999596946276,
+          "qe_time_ms": 1068.408727645874,
+          "tts_time_ms": 1377.9535293579102,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 5,
+          "source": "END",
+          "target": "FIN",
+          "mt_time_ms": 2976.1202335357666,
+          "qe_score": 0.7421127081746998,
+          "qe_time_ms": 1125.1201629638672,
+          "tts_time_ms": 1151.0119438171387,
+          "audio_played": true
+        }
+      ]
+    },
+    {
+      "recording_id": 2,
+      "audio_duration_sec": 207.68,
+      "num_sentences": 6,
+      "pipeline_time_ms": 95897.47643470764,
+      "results": [
+        {
+          "sentence_id": 1,
+          "source": "Okay, this should keep going for 10 seconds and also should hopefully have understanding to complete these keep fires and start recording at their 2 second month, but I'm a cause that in the second month",
+          "target": "Vale, esto deber\u00eda seguir por 10 segundos y tambi\u00e9n deber\u00eda tener un entendimiento para completar estos fuegos y empezar a grabar en su segundo mes, pero soy una causa que en el segundo mes",
+          "mt_time_ms": 22638.126611709595,
+          "qe_score": 0.823718006708894,
+          "qe_time_ms": 3218.3845043182373,
+          "tts_time_ms": 11328.917980194092,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 2,
+          "source": "Normally, warning, that is not good at all",
+          "target": "Normalmente, advertencia, eso no es bueno en absoluto",
+          "mt_time_ms": 7819.3957805633545,
+          "qe_score": 0.8276861045992268,
+          "qe_time_ms": 1607.3169708251953,
+          "tts_time_ms": 4039.6456718444824,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 3,
+          "source": "God, no memory warning",
+          "target": "Dios, no hay advertencia de memoria",
+          "mt_time_ms": 5110.84246635437,
+          "qe_score": 0.8058291678982672,
+          "qe_time_ms": 1283.2586765289307,
+          "tts_time_ms": 2780.8868885040283,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 4,
+          "source": "On plate, I just started Lethaw\u0442\u0443 with your knife in third month",
+          "target": "En el plato, acabo de empezar Lethaw\u00ae con su cuchillo en el tercer mes",
+          "mt_time_ms": 11560.042142868042,
+          "qe_score": 0.7928349346858841,
+          "qe_time_ms": 1911.2648963928223,
+          "tts_time_ms": 6040.233135223389,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 5,
+          "source": "\uc0dd\uac01",
+          "target": "",
+          "mt_time_ms": 4205.850601196289,
+          "qe_score": 0.7231088235353615,
+          "qe_time_ms": 933.6633682250977,
+          "tts_time_ms": 524.3134498596191,
+          "audio_played": true
+        },
+        {
+          "sentence_id": 6,
+          "source": "Final while in the baser Americani",
+          "target": "Final mientras que en el baser Americani",
+          "mt_time_ms": 6723.995685577393,
+          "qe_score": 0.8797899201837134,
+          "qe_time_ms": 1378.997802734375,
+          "tts_time_ms": 2786.257743835449,
+          "audio_played": true
+        }
+      ]
+    }
+  ]
+}
