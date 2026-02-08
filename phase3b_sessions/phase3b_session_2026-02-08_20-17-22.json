@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-02-08 20:17:22",
+  "phase": "3b_realtime_mic",
+  "architecture": "Mic \u2192 ASR \u2192 MT \u2192 QE \u2192 TTS",
+  "target_language": "es",
+  "num_recordings": 2,
+  "total_session_time_sec": 44.62334394454956,
+  "model_loads_sec": {
+    "asr": 2.930917501449585,
+    "mt": 14.21207880973816,
+    "qe": 15.948201894760132,
+    "total": 33.091198205947876
+  },
+  "recordings": [
+    {
+      "recording_id": 1,
+      "audio_duration_sec": 4.672,
+      "num_sentences": 1,
+      "pipeline_time_ms": 13258.771181106567,
+      "results": [
+        {
+          "sentence_id": 1,
+          "source": "This is test number one with everything on CPE",
+          "target": "Esta es la prueba n\u00famero uno con todo en CPE",
+          "mt_time_ms": 8025.76208114624,
+          "qe_score": 1.0,
+          "qe_time_ms": 1601.8898487091064,
+          "tts_time_ms": 3586.669921875,
+          "audio_played": true
+        }
+      ]
+    }
+  ]
+}

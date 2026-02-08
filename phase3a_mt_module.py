@@ -10,7 +10,7 @@ class OpusMT:
             cache_root = Path.home() / ".cache/huggingface/hub"
             model_snapshot = str(cache_root / "models--Helsinki-NLP--opus-mt-en-es/snapshots/5bc4493d463cf000c1f0b50f8d56886a392ed4ab")
         self.model_snapshot = model_snapshot
-        self.device = "cuda"
+        self.device = "cpu"
         self.tokenizer = None
         self.model = None
         self.load_time = 0
@@ -21,7 +21,7 @@ class OpusMT:
         try:
             self.tokenizer = MarianTokenizer.from_pretrained(self.model_snapshot)
             self.model = MarianMTModel.from_pretrained(self.model_snapshot)
-            self.model.to(self.device)
+            #self.model.to(self.device)
             self.model.eval()
             self.load_time = time.time() - t0
             return True, f"Loaded Opus-MT in {self.load_time:.2f}s on {self.device}"

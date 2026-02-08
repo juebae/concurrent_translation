@@ -9,7 +9,7 @@ class QualityEstimation:
     def __init__(self, model_type="mbert", model_snapshot=None):
         self.model_type = model_type
 
-        self.device = "cuda"
+        self.device = "cpu"
         if model_snapshot is None:
             if model_type == "mbert":
                 model_snapshot = str(Path.home() / ".cache/huggingface/hub/models--bert-base-multilingual-cased/snapshots/mbert_pytorch_final")
@@ -39,7 +39,7 @@ class QualityEstimation:
                 self.model.to(self.device)
                 self.model.eval()
             self.load_time = time.time() - t0
-            return True, f"Loaded {self.model_type} in {self.load_time:.2f}s on {self.device}"
+            return True, f"Loaded {self.model_type} in {self.load_time:.2f}s on cpu"
         except Exception as e:
             import traceback
             traceback.print_exc()

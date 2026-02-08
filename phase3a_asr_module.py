@@ -5,27 +5,26 @@ import functools
 import torch
 
 
-if hasattr(torch, "load"):
-    whisper.torch.load = functools.partial(torch.load, weights_only = False)
+#whisper.torch.load = functools.partial(torch.load, weights_only = False)
 
 class WhisperASR:
-    def __init__(self, model_size="tiny", device= "cuda"):
+    def __init__(self, model_size="tiny"):
         self.model_size = model_size
-        self.device = device
+        #self.device = device
         self.model = None
         self.load_time = 0
         self.last_inference_time = 0
         
-        self.device_name = device
+        #self.device_name = device
 
     def load(self):
         t0 = time.time()
         try:
-            self.model = whisper.load_model(self.model_size, device=self.device)
-            self.model.eval()
+            self.model = whisper.load_model(self.model_size)
+            #self.model.eval()
             self.load_time = time.time() - t0
-            device_name = str(next(self.model.parameters()).device)
-            return True, f"Loaded {self.model_size} in {self.load_time:.2f}s on {device_name}"
+            #device_name = str(next(self.model.parameters()).device)
+            return True, f"Loaded {self.model_size} in {self.load_time:.2f}s on cpu"
         except Exception as e:
             return False, f"Failed: {str(e)[:100]}"
 
@@ -45,9 +44,7 @@ class WhisperASR:
 
     def get_load_time(self):
         return self.load_time
-    def get_device_name(self):
-        return self.device
-
+    
     def get_last_inference_time(self):
         return self.last_inference_time
 

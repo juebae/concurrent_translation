@@ -44,7 +44,7 @@ class RealtimeTranslationPipeline:
         if display_devices:
             self._show_audio_devices()
         
-        self.asr = WhisperASR(model_size="tiny",device= "cuda")
+        self.asr = WhisperASR(model_size="tiny")
         self.mt = OpusMT()
         self.qe = QualityEstimation(model_type="mbert")
         self.tts = EspeakNGTTS(language=target_language)
@@ -106,6 +106,7 @@ class RealtimeTranslationPipeline:
         # Create UNIQUE filename with timestamp (milliseconds)
         timestamp = int(time.time() * 1000)
         temp_file = f"/tmp/recording_{timestamp}.wav"
+        print(f"[DEBUG] saved at {temp_file}")
         
         self.mic.save_audio(audio_array, temp_file)
         
@@ -113,8 +114,8 @@ class RealtimeTranslationPipeline:
             success, text, latency = self.asr.transcribe(temp_file, language="en")
             return success, text, latency
         finally:
-            if os.path.exists(temp_file):
-                os.unlink(temp_file)
+            pass #if os.path.exists(temp_file):
+                #os.unlink(temp_file)
     
     def translate_sentence(self, sentence):
         """Translate English sentence to target language"""
@@ -179,7 +180,7 @@ class RealtimeTranslationPipeline:
                     break
                 
                 # Record until silence
-                success, audio_array, duration = self.mic.record_until_silence(timeout_sec=10)
+                success, audio_array, duration = self.mic.record_until_silence(timeout_sec=20)
                 
                 if not success or len(audio_array) == 0:
                     print(" ✗ No speech detected, skipping\n")
@@ -199,9 +200,9 @@ class RealtimeTranslationPipeline:
                 print(f" Input: \"{transcription}\"\n")
                 
                 # Split into sentences and process
-                sentences = [s.strip() for s in re.split(r'[.!?]+', transcription) if s.strip()]
-                if not sentences:
-                    sentences = [transcription]
+                #sentences = [s.strip() for s in re.split(r'[.!?]+', transcription) if s.strip()]
+                #if not sentences:
+                sentences = [transcription]
                 
                 print(f"Processing {len(sentences)} sentence(s)...\n")
                 print("="*80)
@@ -281,7 +282,7 @@ class RealtimeTranslationPipeline:
         print("="*80 + "\n")
         
         print("Model Load Times:")
-        print(f" ASR: {self.asr.get_load_time():.2f}s on {self.asr.get_device_name()}")
+        print(f" ASR: {self.asr.get_load_time():.2f}s on cpu")
         print(f" MT: {self.mt.get_load_time():.2f}s")
         print(f" QE: {self.qe.get_load_time():.2f}s")
         total_load = (self.asr.get_load_time() + 

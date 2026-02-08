@@ -26,8 +26,8 @@ class MicrophoneAudioCapture:
                  sample_rate=16000,
                  chunk_size=1024, 
                  channels=1,
-                 silence_threshold=0.02,
-                 silence_duration_sec=2.0):
+                 silence_threshold=0.015,
+                 silence_duration_sec=5.0):
         """
         Initialize microphone capture
         
