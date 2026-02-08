@@ -281,7 +281,7 @@ class RealtimeTranslationPipeline:
         print("="*80 + "\n")
         
         print("Model Load Times:")
-        print(f" ASR: {self.asr.get_load_time():.2f}s on {self.asr.get_device_name}")
+        print(f" ASR: {self.asr.get_load_time():.2f}s on {self.asr.get_device_name()}")
         print(f" MT: {self.mt.get_load_time():.2f}s")
         print(f" QE: {self.qe.get_load_time():.2f}s")
         total_load = (self.asr.get_load_time() + 

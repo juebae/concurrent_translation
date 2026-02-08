@@ -69,8 +69,8 @@ class QualityEstimation:
             else:
                 qe_input = f"{source_text} {target_text}"
                 
-                    qe_tokens = self.tokenizer(qe_input, return_tensors="pt", max_length=512, truncation=True, padding=True)
-                    qe_tokens = {k: v.to(self.device) for k, v in src_input.items()}
+                qe_tokens = self.tokenizer(qe_input, return_tensors="pt", max_length=512, truncation=True, padding=True)
+                qe_tokens = {k: v.to(self.device) for k, v in src_input.items()}
                 with torch.no_grad():    
                     qe_output = self.model(**qe_tokens)
                     if self.model_type == "tinybert":

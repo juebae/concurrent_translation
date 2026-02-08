@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 import time
 import whisper
+import functools
+import torch
+
+
+if hasattr(torch, "load"):
+    whisper.torch.load = functools.partial(torch.load, weights_only = False)
 
 class WhisperASR:
     def __init__(self, model_size="tiny", device= "cuda"):
@@ -9,13 +15,14 @@ class WhisperASR:
         self.model = None
         self.load_time = 0
         self.last_inference_time = 0
-        self.model.eval()
+        
         self.device_name = device
 
     def load(self):
         t0 = time.time()
         try:
-            self.model = whisper.load_model(self.model_size)
+            self.model = whisper.load_model(self.model_size, device=self.device)
+            self.model.eval()
             self.load_time = time.time() - t0
             device_name = str(next(self.model.parameters()).device)
             return True, f"Loaded {self.model_size} in {self.load_time:.2f}s on {device_name}"
