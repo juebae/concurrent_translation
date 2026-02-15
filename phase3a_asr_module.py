@@ -20,7 +20,7 @@ class WhisperASR:
     def load(self):
         t0 = time.time()
         try:
-            self.model = whisper.load_model(self.model_size)
+            self.model = whisper(self.model_size, device = "cpu")
             #self.model.eval()
             self.load_time = time.time() - t0
             #device_name = str(next(self.model.parameters()).device)
@@ -34,6 +34,8 @@ class WhisperASR:
         t0 = time.time()
         try:
             with torch.no_grad():
+            #segments, info = self.model.transcribe(audio_file, language=language)
+            #text = " ".join([segment.txt for segment in segments]).strip()
                 result = self.model.transcribe(audio_file, language=language)
             text = result.get("text", "").strip()
             inference_time = (time.time() - t0) * 1000.0
