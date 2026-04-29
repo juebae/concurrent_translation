@@ -1,0 +1,11 @@
+# Start from CUDA PyTorch 1.10 base with Python 3.6
+FROM dustynv/pytorch:1.10-r32.7.1
+
+# Upgrade pip
+RUN python3 -m pip install --upgrade pip
+
+# Install faster-whisper (Python 3.6 compatible) + your other dependencies
+RUN python3 -m pip install faster-whisper transformers sentencepiece protobuf
+
+# Set working directory
+WORKDIR /workspace/disso

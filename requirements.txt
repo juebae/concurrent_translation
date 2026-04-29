@@ -1,0 +1,34 @@
+# ===== Edge Speech Translation Pipeline =====
+# Hardware: Jetson Nano 4GB, JetPack 4.6
+# Python: 3.6.9
+# Last updated: Feb 16, 2026
+
+# ===== Core ML/NLP =====
+torch==2.2.2              # PyTorch ML framework
+transformers==4.20.0      # Opus-MT translation, mBERT QE
+sentencepiece==0.2.0      # Tokenization for MT models
+
+# ===== Audio Processing =====
+sounddevice==0.5.3        # Microphone input capture
+numpy==1.24.4             # Array operations
+scipy==1.10.1             # Signal processing for audio
+noisereduce==3.0.3        # Background noise reduction
+
+# ===== Dependencies (auto-installed with above) =====
+# sacremoses - Tokenization helper (installed with transformers)
+
+# ===== Vosk ASR (install separately) =====
+# Vosk doesn't support pip install directly on Jetson aarch64
+# Download wheel from GitHub:
+#   https://github.com/alphacep/vosk-api/releases/download/v0.3.42/vosk-0.3.42-py3-none-linux_aarch64.whl
+# Install with:
+#   pip3 install vosk-0.3.42-py3-none-linux_aarch64.whl
+# Download model (~200 MB):
+#   wget https://alphacephei.com/vosk/models/vosk-model-en-us-0.22-lgraph.zip
+#   unzip vosk-model-en-us-0.22-lgraph.zip
+
+# ===== System Dependencies (install via apt) =====
+# sudo apt-get update
+# sudo apt-get install -y espeak-ng          # Text-to-speech engine
+# sudo apt-get install -y portaudio19-dev    # Audio I/O (for sounddevice)
+# sudo apt-get install -y libsndfile1        # Audio file format support
