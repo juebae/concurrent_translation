@@ -8,7 +8,7 @@ PHASE4_RESULTS = '/home/zubair/disso/results/baseline_results.json'
 OUT          = '/home/zubair/disso/results/correct_baseline.json'
 os.makedirs('/home/zubair/disso/results', exist_ok=True)
 
-# ── Pull WER from Phase 4 results (already computed) ────────
+#Pull WER from Phase 4 results (already computed)
 wer_score = None
 if os.path.exists(PHASE4_RESULTS):
     with open(PHASE4_RESULTS) as f:
@@ -18,7 +18,7 @@ if os.path.exists(PHASE4_RESULTS):
 else:
     print("Phase 4 results not found — WER will be N/A")
 
-# ── MT-only BLEU/ChrF on clean FLORES text ──────────────────
+#MT-only BLEU/ChrF on clean FLORES text
 print("\nLoading original opus-mt-en-es (no fine-tuning)...")
 t0  = time.time()
 tok = MarianTokenizer.from_pretrained(MODEL_DIR)
@@ -39,7 +39,7 @@ for i in range(3):
     print()
 
 hyps, lats = [], []
-print(f"Translating {len(srcs)} sentences (MT only, clean text)...")
+print(f"Translating {len(srcs)} sentences (MT only, clean text)")
 for i, src in enumerate(srcs):
     enc = tok([src], return_tensors='pt', truncation=True, max_length=128)
     t   = time.time()
@@ -61,7 +61,7 @@ avg  = sum(lats)/len(lats)
 p95  = sorted(lats)[94]
 
 print("\n" + "="*60)
-print("CORRECT BASELINE — Jetson Nano")
+print("CORRECT BASELINE on Jetson Nano")
 print("="*60)
 print(f"  WER  (ASR, Phase 4, Whisper Tiny) : {wer_score if wer_score else 'N/A'}")
 print(f"  BLEU (MT only, clean text)        : {bleu:.4f}  (Colab: 25.36)")
@@ -71,8 +71,8 @@ print(f"  P95 latency                       : {p95:.1f} ms")
 print(f"  Load time                         : {load_time:.1f} s")
 print("="*60)
 print("NOTE: BLEU/ChrF = MT component only (clean FLORES-100 text)")
-print("      WER       = ASR component only (FLEURS speech input)")
-print("      These are separate evaluations, not a pipeline score")
+print("WER ASR component only (FLEURS speech input)")
+print("These are separate evaluations, not a pipeline score")
 print("="*60)
 
 with open(OUT, 'w') as f:

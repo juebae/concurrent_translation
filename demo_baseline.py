@@ -25,7 +25,7 @@ SILENCE_THRESH    = 0.025   # raise this if still too sensitive
 MIN_SENTENCE_SEC  = 1.0     # ignore chunks shorter than this
 SILENCE_GAP_SEC   = 1.2     # gap between words that counts as sentence boundary
 
-# ── System stats ─────────────────────────────────────────────────────────────
+#  System stats 
 def get_ram_mb():
     try:
         lines = {}
@@ -47,7 +47,7 @@ def speak_tts(text):
     except: pass
     return round((time.time()-t0)*1000,1)
 
-# ── Load models ───────────────────────────────────────────────────────────────
+# Load models
 print("\n"+"="*60+"\n BASELINE — loading models\n"+"="*60)
 asr = WhisperASR(model_size="tiny")
 ok,msg = asr.load(); print(f"[ASR] {msg}")
@@ -61,8 +61,8 @@ qe = QualityEstimation()
 ok,msg = qe.load(); print(f"[QE]  {msg}")
 if not ok: sys.exit("QE failed")
 
-# ── Shared state ─────────────────────────────────────────────────────────────
-audio_chunks   = []          # raw recorded chunks (mic thread writes)
+# Shared state 
+udio_chunks   = []          # raw recorded chunks (mic thread writes)
 stop_mic       = threading.Event()
 sentence_queue = queue.Queue()
 records        = []
@@ -70,16 +70,16 @@ session_start  = time.time()
 sentence_num   = [0]
 print_lock     = threading.Lock()
 
-# ── Mic thread: records until Enter is pressed ───────────────────────────────
+# Mic thread: records until Enter is pressed
 def mic_thread_fn():
     def callback(indata, frames, time_info, status):
         audio_chunks.append(indata.copy().flatten())
     with sd.InputStream(samplerate=SAMPLE_RATE, channels=1,
                         blocksize=CHUNK_SIZE, dtype="float32",
                         callback=callback):
-        stop_mic.wait()   # blocks until Enter pressed
+        stop_mic.wait() blocks until Enter pressed
 
-# ── Sentence splitter: chops recorded audio by silence gaps ──────────────────
+#  Sentence splitter: chops recorded audio by silence gaps 
 def split_sentences(chunks, sr=SAMPLE_RATE,
                     silence_thresh=SILENCE_THRESH,
                     silence_gap_sec=SILENCE_GAP_SEC,
@@ -112,7 +112,7 @@ def split_sentences(chunks, sr=SAMPLE_RATE,
             sentences.append(seg)
     return sentences
 
-# ── Pipeline thread: processes sentences from queue ──────────────────────────
+#  Pipeline thread: processes sentences from queue 
 def pipeline_thread_fn():
     while True:
         item = sentence_queue.get()
@@ -167,7 +167,7 @@ def pipeline_thread_fn():
             print(f"         QE={qe_score}  Total={total_ms:.0f}ms  RAM={ram}MB  Temp={temp}°C")
         gc.collect()
 
-# ── Main ──────────────────────────────────────────────────────────────────────
+# Main
 print("\n"+"="*60)
 print(" Press ENTER to stop recording and process")
 print(" Ctrl+C at any time to cancel")
@@ -180,7 +180,7 @@ pipeline_t.start()
 
 try:
     while True:
-        print("🎙  Recording... speak your sentences. Press ENTER when done.")
+        print("Recording... speak your sentences. Press ENTER when done.")
         input()   # blocks until Enter
         stop_mic.set()
         break
