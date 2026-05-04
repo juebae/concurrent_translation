@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
-"""
-demo_m2_correction.py — M2 MBR self-correction
-Sequential model loading to avoid OOM on Jetson 4GB
-Record until Enter → split → ASR all → MT all → QE gate → MBR if triggered → TTS
-"""
+
 import sys, os, time, gc, csv, json, subprocess, tempfile, threading
 sys.path.insert(0, os.path.expanduser("~/disso"))
 
@@ -98,7 +94,7 @@ def split_sentences(chunks, sr=SAMPLE_RATE):
 
     return sentences
 
-# ── Record ────────────────────────────────────────────────────────────────────
+# Record 
 audio_chunks = []
 stop_mic     = threading.Event()
 
@@ -121,7 +117,7 @@ print(f"[ASR] {msg}")
 if not ok: sys.exit("ASR failed")
 
 print("\n" + "="*60)
-print(" 🎙  Recording... speak your sentences.")
+print(" Recording... speak your sentences.")
 print(" Press ENTER when done.")
 print("="*60 + "\n")
 
@@ -152,7 +148,7 @@ for i, seg in enumerate(sentences_audio, 1):
     wav_files.append(path)
     print(f"  Saved sentence {i}: {round(len(seg)/SAMPLE_RATE,2)}s")
 
-# ── ASR all ───────────────────────────────────────────────────────────────────
+#ASR all 
 print("\n[PHASE] ASR transcribing...")
 transcripts = []; asr_times = []
 for i, wav in enumerate(wav_files, 1):
@@ -165,7 +161,7 @@ for i, wav in enumerate(wav_files, 1):
 asr.cleanup(); gc.collect()
 print(f"[ASR] done, unloaded. RAM={get_ram_mb()}MB\n")
 
-# ── MT Pass 1 all ─────────────────────────────────────────────────────────────
+#MT Pass 1 all
 print("[PHASE] Loading MT...")
 mt = OpusMT()
 ok, msg = mt.load(); print(f"[MT] {msg}")
@@ -178,7 +174,7 @@ for i, text in enumerate(transcripts, 1):
     print(f"  [{i}] {trans!r}  ({ms:.0f}ms)")
     translations_p1.append(trans if ok_m else ""); mt1_times.append(ms)
 
-# ── QE all ────────────────────────────────────────────────────────────────────
+# QE all 
 print(f"\n[PHASE] Loading QE (threshold={QE_THRESHOLD})...")
 qe = QualityEstimation()
 ok, msg = qe.load(); print(f"[QE] {msg}")
@@ -198,7 +194,7 @@ for i, (src, tgt) in enumerate(zip(transcripts, translations_p1), 1):
 qe.cleanup(); gc.collect()
 print(f"[QE] done, unloaded. RAM={get_ram_mb()}MB\n")
 
-# ── MT Pass 2 MBR for triggered sentences ─────────────────────────────────────
+# MT Pass 2 MBR for triggered sentences 
 translations_final = list(translations_p1)
 mt2_times = [0] * len(transcripts)
 
@@ -221,7 +217,7 @@ if any(triggered):
 else:
     print("[INFO] No sentences triggered correction, skipping MT Pass 2\n")
 
-# ── TTS ───────────────────────────────────────────────────────────────────────
+#TTS
 print("[PHASE] TTS speaking translations...")
 tts_times = []
 for i, trans in enumerate(translations_final, 1):
@@ -230,7 +226,7 @@ for i, trans in enumerate(translations_final, 1):
     print(f"  [{i}] spoke ({ms:.0f}ms)")
     tts_times.append(ms)
 
-# ── Save ──────────────────────────────────────────────────────────────────────
+#  Save
 records = []
 wall = 0
 for i in range(len(transcripts)):

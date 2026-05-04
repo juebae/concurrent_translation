@@ -82,8 +82,8 @@ class MicrophoneAudioCapture:
             self.noise_profile = noise.flatten()
             self.noise_reduction_enabled = True
             
-            print("✓ Noise profile captured successfully!")
-            print("✓ Noise reduction enabled\n")
+            print(" Noise profile captured successfully!")
+            print(" Noise reduction enabled\n")
             
             return True, f"Noise profile captured ({duration}s)"
             

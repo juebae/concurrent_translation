@@ -24,9 +24,9 @@ N_BEAMS      = 5
 
 os.makedirs("/home/zubair/disso/results", exist_ok=True)
 
-# ─────────────────────────────────────────────────────────────
+
 # Anchor extractors
-# ─────────────────────────────────────────────────────────────
+
 
 SPANISH_STOPWORDS = {
     "el","la","los","las","un","una","de","en","y","a","que","es",
@@ -62,9 +62,7 @@ def extract_anchors_strict(text, max_anchors=3):
     chosen = preferred if preferred else fallback[:2]
     return chosen[:max_anchors]
 
-# ─────────────────────────────────────────────────────────────
 # MBR selector
-# ─────────────────────────────────────────────────────────────
 
 def mbr_select(candidates):
     if len(candidates) == 1:
@@ -78,9 +76,7 @@ def mbr_select(candidates):
             best_text = hyp
     return best_text
 
-# ─────────────────────────────────────────────────────────────
 # Phase 1: Baseline beam-1
-# ─────────────────────────────────────────────────────────────
 
 with open(FLORES_PATH) as f:
     flores = json.load(f)
@@ -104,9 +100,7 @@ for s in samples:
 mt.cleanup(); del mt; gc.collect(); time.sleep(3)
 print("Baseline done.")
 
-# ─────────────────────────────────────────────────────────────
-# Phase 2: QE score all
-# ─────────────────────────────────────────────────────────────
+# Phase 2: QE score 
 
 print("\n=== QE scoring ===")
 qe = QualityEstimation()
@@ -124,9 +118,7 @@ triggered_ids = {r["id"] for r in records
                  if r["qe_score"] is not None and r["qe_score"] < QE_THRESHOLD}
 print(f"Triggered: {len(triggered_ids)}/{len(records)} ({100*len(triggered_ids)/len(records):.1f}%)")
 
-# ─────────────────────────────────────────────────────────────
 # Phase 3: Generate N beams (reused across all experiments)
-# ─────────────────────────────────────────────────────────────
 
 print(f"\n=== Generating {N_BEAMS} beams ===")
 mt2 = OpusMT()
@@ -140,9 +132,7 @@ for r in records:
 
 print("Beam generation done.")
 
-# ─────────────────────────────────────────────────────────────
 # Phase 4: Run all experiments
-# ─────────────────────────────────────────────────────────────
 
 print("\n=== Running CBS experiments ===")
 gc.collect(); time.sleep(3)
@@ -210,9 +200,7 @@ qe2.cleanup(); del qe2
 mt2.cleanup(); del mt2
 gc.collect()
 
-# ─────────────────────────────────────────────────────────────
 # Metrics
-# ─────────────────────────────────────────────────────────────
 
 refs    = [r["ref"]   for r in records]
 hyps_b1 = [r["mt_b1"] for r in records]
@@ -230,9 +218,7 @@ bleu_a10, chrf_a10     = score(hyps_expA_1_0,  refs)
 bleu_b,   chrf_b       = score(hyps_expB,      refs)
 bleu_c,   chrf_c       = score(hyps_expC,      refs)
 
-# ─────────────────────────────────────────────────────────────
 # Results table
-# ─────────────────────────────────────────────────────────────
 
 rows = [
     ("Baseline (B1)",            bleu_b1,  chrf_b1),
@@ -252,9 +238,7 @@ for name, bleu, chrf in rows:
     marker = " ◀ BEST" if name.startswith("MBR") else ""
     print(f"{name:<30} {bleu:>8.2f} {db:>+8.2f} {chrf:>8.2f} {dc:>+8.2f}{marker}")
 
-# ─────────────────────────────────────────────────────────────
 # Save
-# ─────────────────────────────────────────────────────────────
 
 summary = {
     "config": {"threshold": QE_THRESHOLD, "n_beams": N_BEAMS,

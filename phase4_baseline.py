@@ -63,7 +63,7 @@ with open(INTERIM_PATH, "w") as f:
     json.dump(asr_results, f)
 print(f"ASR done. Saved interim to {INTERIM_PATH}")
 
-# ── PHASE 2: MT ──────────────────────────────────────────────
+#  PHASE 2: MT 
 print("\n=== PHASE 2: MT ===")
 mt = OpusMT()
 ok, msg = mt.load()
@@ -83,7 +83,7 @@ mt.cleanup()
 del mt
 print("MT done.")
 
-# ── PHASE 3: QE ──────────────────────────────────────────────
+#  PHASE 3: QE
 print("\n=== PHASE 3: QE ===")
 qe = QualityEstimation()
 ok, msg = qe.load()
@@ -102,7 +102,7 @@ qe.cleanup()
 del qe
 print("QE done.")
 
-# ── METRICS ──────────────────────────────────────────────────
+#  METRICS
 valid = [r for r in asr_results if r.get("asr_text") and r.get("mt_text")]
 
 asr_refs = [r["ref_text"] for r in valid]

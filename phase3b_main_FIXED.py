@@ -66,7 +66,7 @@ class RealtimeTranslationPipeline:
         
         for dev in devices:
             print(f"[{dev['index']}] {dev['name']}")
-            print(f"    Channels: {dev['channels']} | Sample Rate: {dev['rate']} Hz\n")
+            print(f"Channels: {dev['channels']} | Sample Rate: {dev['rate']} Hz\n")
     
     def load_all_models(self):
         """Load all NLP/ML models"""
@@ -76,26 +76,26 @@ class RealtimeTranslationPipeline:
         
         print("[STEP 1] Loading ASR Module (vosk)...")
         success, msg = self.asr.load()
-        print(f" {'✓' if success else '✗'} {msg}\n")
+        print(f" {'Success' if success else 'Did not work'} {msg}\n")
         if not success: return False
         
         print("[STEP 2] Loading MT Module (Opus-MT en→target)...")
         success, msg = self.mt.load()
-        print(f" {'✓' if success else '✗'} {msg}\n")
+        print(f" {'Success' if success else 'Did not Work'} {msg}\n")
         if not success: return False
         
         print("[STEP 3] Loading QE Module (mBERT)...")
         success, msg = self.qe.load()
-        print(f" {'✓' if success else '✗'} {msg}\n")
+        print(f" {'Success' if success else 'Didnt Work'} {msg}\n")
         if not success: return False
         
         print("[STEP 4] Checking TTS Module (espeak-ng)...")
         success, msg = self.tts.load()
-        print(f" {'✓' if success else '✗'} {msg}\n")
+        print(f" {'Success' if success else 'Did not Work'} {msg}\n")
         
         print("[STEP5] Calibrating Noise Reduction...")
         success, msg = self.mic.calibrate_noise_profile(duration=2.0)
-        print(f" {'✓' if success else '✗'} {msg}\n")
+        print(f" {'Success' if success else 'Did not work'} {msg}\n")
         return True
     
     def transcribe_audio(self, audio_array):
@@ -145,7 +145,7 @@ class RealtimeTranslationPipeline:
         
         print("[STEP 6] Initializing Microphone...\n")
         success, msg = self.mic.start_recording()
-        print(f" {'✓' if success else '✗'} {msg}\n")
+        print(f" {'Ready' if success else 'Not ready'} {msg}\n")
         
         if not success:
             print("ERROR: Failed to initialize microphone\n")
@@ -183,20 +183,20 @@ class RealtimeTranslationPipeline:
                 success, audio_array, duration = self.mic.record_until_silence(timeout_sec=20)
                 
                 if not success or len(audio_array) == 0:
-                    print(" ✗ No speech detected, skipping\n")
+                    print("  No speech detected, skipping\n")
                     continue
                 
-                print(f" ✓ Recorded {duration:.2f} seconds\n")
+                print(f"  Recorded {duration:.2f} seconds\n")
                 
                 # ASR: English transcription
                 print("[Step A] Transcribing English...")
                 asr_success, transcription, asr_latency = self.transcribe_audio(audio_array)
                 
                 if not asr_success or not transcription.strip():
-                    print(f" ✗ Transcription failed\n")
+                    print(f"  Transcription failed\n")
                     continue
                 
-                print(f" ✓ Transcribed in {asr_latency:.2f}ms")
+                print(f"  Transcribed in {asr_latency:.2f}ms")
                 print(f" Input: \"{transcription}\"\n")
                 
                 # Split into sentences and process
@@ -305,7 +305,7 @@ class RealtimeTranslationPipeline:
             print(f" Total Pipeline Time: {total_pipeline:.2f}ms\n")
         
         print("="*80)
-        print("✓ SESSION COMPLETE")
+        print(" SESSION COMPLETE")
         print("="*80 + "\n")
     
     def _save_session(self, num_recordings, total_time, results):

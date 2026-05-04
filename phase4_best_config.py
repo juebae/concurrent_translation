@@ -25,7 +25,7 @@ with open(FLORES_PATH) as f:
 samples = [{"id": s["id"], "src": s["source_en"], "ref": s["reference_es"]} for s in flores]
 print(f"Loaded {len(samples)} FLORES samples.")
 
-# ── Step 1: Beam=1 baseline ──────────────────────────────────
+#  Step 1: Beam=1 baseline
 print("\n=== Beam-1 baseline ===")
 mt = OpusMT()
 ok, msg = mt.load(); print(msg)
@@ -46,7 +46,7 @@ mt.cleanup(); del mt
 gc.collect(); time.sleep(3)
 print("Baseline translations done.")
 
-# ── Step 2: QE score all baseline outputs ────────────────────
+#  Step 2: QE score all baseline outputs
 print("\n=== QE scoring ===")
 qe = QualityEstimation()
 ok, msg = qe.load(); print(msg)
@@ -69,7 +69,7 @@ triggered_ids = {
 }
 print(f"Triggered (QE < {THRESHOLD}): {len(triggered_ids)}/{len(records)}")
 
-# ── Step 3: Generate N-beam candidates for all samples ───────
+#  Step 3: Generate N-beam candidates for all samples 
 print(f"\n=== Generating {N_BEAMS} beams for all samples ===")
 mt2 = OpusMT()
 ok, msg = mt2.load(); print(msg)
@@ -85,7 +85,7 @@ for r in records:
 
 print("Beam generation done.")
 
-# ── Helper: MBR selector (Method 2) ──────────────────────────
+#  Helper: MBR selector (Method 2) 
 def mbr_select(candidates):
     if len(candidates) == 1:
         return candidates[0]
@@ -98,7 +98,7 @@ def mbr_select(candidates):
             best_text = hyp
     return best_text
 
-# ── Step 4: Compute M1, M2, M3 at best config ────────────────
+#  Step 4: Compute M1, M2, M3 at best config
 print("\n=== Computing M1 (QE rerank), M2 (MBR), M3 (CBS) ===")
 gc.collect(); time.sleep(3)
 qe2 = QualityEstimation()
@@ -151,7 +151,7 @@ qe2.cleanup(); del qe2
 mt2.cleanup(); del mt2
 gc.collect()
 
-# ── Step 5: Sanity BLEU/ChrF check ───────────────────────────
+#  Step 5: Sanity BLEU/ChrF check 
 refs     = [r["ref"]   for r in records]
 hyps_b1  = [r["mt_b1"] for r in records]
 hyps_m1  = [r["mt_m1"] for r in records]
@@ -168,7 +168,7 @@ bleu_m1, chrf_m1 = score(hyps_m1)
 bleu_m2, chrf_m2 = score(hyps_m2)
 bleu_m3, chrf_m3 = score(hyps_m3)
 
-print("\n── Sanity check (FLORES, tau=0.90, N=5) ──")
+print("\n Sanity check (FLORES, tau=0.90, N=5) ")
 print(f"{'Method':<8} {'BLEU':>8} {'ΔBLEU':>8} {'ChrF':>8} {'ΔChrF':>8}")
 print("─" * 50)
 for name, bleu, chrf in [
@@ -179,7 +179,7 @@ for name, bleu, chrf in [
 ]:
     print(f"{name:<8} {bleu:>8.2f} {bleu-bleu_b1:>+8.2f} {chrf:>8.2f} {chrf-chrf_b1:>+8.2f}")
 
-# ── Step 6: Save per-sample hypotheses ───────────────────────
+#  Step 6: Save per-sample hypotheses 
 out = []
 for r in records:
     out.append({
