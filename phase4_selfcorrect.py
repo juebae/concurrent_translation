@@ -79,7 +79,6 @@ gc.collect()
 time.sleep(3)
 print("QE scoring done.")
 
-# ── GRID SEARCH ───────────────────────────────────────────────
 grid_results = []
 
 for N_BEAMS in BEAM_SIZES:

@@ -1,14 +1,3 @@
-"""
-phase4_cbs_eval.py
-Evaluates 3 CBS experiments vs baseline to justify MBR as best method.
-
-Exp A: Original anchors, boost sweep [2.0, 1.5, 1.0]
-Exp B: Strict anchors (names/digits only), boost=1.5
-Exp C: Hybrid - CBS candidates merged into MBR pool
-
-All run at QE_THRESHOLD=0.90, N_BEAMS=5 to match best grid config.
-"""
-
 import sys, os, json, time, gc
 sys.path.insert(0, '/home/zubair/disso')
 
@@ -24,9 +13,7 @@ N_BEAMS      = 5
 
 os.makedirs("/home/zubair/disso/results", exist_ok=True)
 
-
 # Anchor extractors
-
 
 SPANISH_STOPWORDS = {
     "el","la","los","las","un","una","de","en","y","a","que","es",
@@ -100,7 +87,7 @@ for s in samples:
 mt.cleanup(); del mt; gc.collect(); time.sleep(3)
 print("Baseline done.")
 
-# Phase 2: QE score 
+# Phase 2: QE score all
 
 print("\n=== QE scoring ===")
 qe = QualityEstimation()
@@ -218,7 +205,7 @@ bleu_a10, chrf_a10     = score(hyps_expA_1_0,  refs)
 bleu_b,   chrf_b       = score(hyps_expB,      refs)
 bleu_c,   chrf_c       = score(hyps_expC,      refs)
 
-# Results table
+# Results 
 
 rows = [
     ("Baseline (B1)",            bleu_b1,  chrf_b1),
@@ -237,7 +224,6 @@ for name, bleu, chrf in rows:
     dc = round(chrf - chrf_b1, 2)
     marker = " ◀ BEST" if name.startswith("MBR") else ""
     print(f"{name:<30} {bleu:>8.2f} {db:>+8.2f} {chrf:>8.2f} {dc:>+8.2f}{marker}")
-
 # Save
 
 summary = {
