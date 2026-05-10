@@ -62,7 +62,7 @@ ok,msg = qe.load(); print(f"[QE]  {msg}")
 if not ok: sys.exit("QE failed")
 
 # Shared state 
-udio_chunks   = []          # raw recorded chunks (mic thread writes)
+audio_chunks   = []          # raw recorded chunks (mic thread writes)
 stop_mic       = threading.Event()
 sentence_queue = queue.Queue()
 records        = []
