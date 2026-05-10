@@ -89,8 +89,8 @@ class MicrophoneAudioCapture:
             
         except Exception as e:
             return False, f"Failed to calibrate noise: {str(e)}"
+
     
-    # ========== NEW: Apply noise reduction to audio ==========
     def _apply_noise_reduction(self, audio_chunk):
         if not self.noise_reduction_enabled or self.noise_profile is None:
             return audio_chunk
@@ -172,8 +172,7 @@ class MicrophoneAudioCapture:
         while time.time() - start_time < timeout_sec:
             if len(self.audio_buffer) > 0:
                 chunk = self.audio_buffer[0]
-                
-                # ========== NEW: Apply noise reduction HERE ==========
+            
                 chunk_denoised = self._apply_noise_reduction(chunk)
                 
                 energy = self._calculate_energy(chunk_denoised)
