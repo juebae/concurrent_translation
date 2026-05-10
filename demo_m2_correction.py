@@ -116,10 +116,11 @@ ok, msg = asr.load()
 print(f"[ASR] {msg}")
 if not ok: sys.exit("ASR failed")
 
-print("\n" + "="*60)
+
+print("==================================================================================================")
 print(" Recording... speak your sentences.")
 print(" Press ENTER when done.")
-print("="*60 + "\n")
+print("==================================================================================================")
 
 mic_t = threading.Thread(target=mic_thread_fn, daemon=True)
 mic_t.start()
@@ -264,5 +265,5 @@ with open(OUTPUT_JSON, "w") as f:
 
 trig_count = sum(triggered)
 avg = round(sum(r["total_pipeline_ms"] for r in records) / len(records), 1)
-print(f"\n[SAVED] {len(records)} sentences → {OUTPUT_CSV}")
+print(f"\n[SAVED] {len(records)} sentences -> {OUTPUT_CSV}")
 print(f"Avg latency: {avg}ms | Triggered: {trig_count}/{len(records)}")
