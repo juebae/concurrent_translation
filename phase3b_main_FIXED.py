@@ -1,12 +1,4 @@
 #!/usr/bin/env python3
-"""
-PHASE 3B - Real-time Microphone Speech Translation Pipeline
-Integrates Phase 3A modules with live mic input on Jetson Nano
-English → Translation → Text-to-Speech
-
-Architecture:
-  Microphone → ASR (Whisper) → MT (Opus-MT) → QE (mBERT) → TTS (espeak-ng)
-"""
 
 import sys, time, json, re, os
 from pathlib import Path
