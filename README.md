@@ -2,7 +2,7 @@
 
 Real-time speech translation system running entirely on NVIDIA Jetson Nano (4GB)
 
-**English speech → ASR (Vosk) → MT (Opus-MT) → QE (mBERT) → TTS (espeak-ng)**
+**English speech → ASR (Whisper) → MT (Opus-MT) → QE (mBERT) → TTS (espeak-ng)**
 
 [![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-369/)
 [![JetPack 4.6](https://img.shields.io/badge/JetPack-4.6-green.svg)](https://developer.nvidia.com/embedded/jetpack)
