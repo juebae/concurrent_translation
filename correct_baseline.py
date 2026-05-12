@@ -2,10 +2,10 @@ import torch, time, os, json
 from transformers import MarianMTModel, MarianTokenizer
 from sacrebleu import corpus_bleu, corpus_chrf
 
-MODEL_DIR    = '/home/zubair/disso/models/opus_mt_original'
-FLORES       = '/home/zubair/disso/models/opus_mt_original/flores_100.json'
+MODEL_DIR='/home/zubair/disso/models/opus_mt_original'
+FLORES= '/home/zubair/disso/models/opus_mt_original/flores_100.json'
 PHASE4_RESULTS = '/home/zubair/disso/results/baseline_results.json'
-OUT          = '/home/zubair/disso/results/correct_baseline.json'
+OUT = '/home/zubair/disso/results/correct_baseline.json'
 os.makedirs('/home/zubair/disso/results', exist_ok=True)
 
 #Pull WER from Phase 4 results (already computed)
