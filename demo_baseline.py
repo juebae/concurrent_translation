@@ -19,11 +19,11 @@ OUTPUT_CSV  = os.path.expanduser("~/disso/results/demo_baseline_log.csv")
 OUTPUT_JSON = os.path.expanduser("~/disso/results/demo_baseline_log.json")
 os.makedirs(os.path.expanduser("~/disso/results"), exist_ok=True)
 
-SAMPLE_RATE       = 16000
-CHUNK_SIZE        = 1024
-SILENCE_THRESH    = 0.025   # raise this if still too sensitive
-MIN_SENTENCE_SEC  = 1.0     # ignore chunks shorter than this
-SILENCE_GAP_SEC   = 1.2     # gap between words that counts as sentence boundary
+SAMPLE_RATE = 16000
+CHUNK_SIZE = 1024
+SILENCE_THRESH = 0.025   # raise this if still too sensitive
+MIN_SENTENCE_SEC = 1.0     # ignore chunks shorter than this
+SILENCE_GAP_SEC = 1.2     # gap between words that counts as sentence boundary
 
 #  System stats 
 def get_ram_mb():
@@ -62,7 +62,7 @@ ok,msg = qe.load(); print(f"[QE]  {msg}")
 if not ok: sys.exit("QE failed")
 
 # Shared state 
-audio_chunks   = []          # raw recorded chunks (mic thread writes)
+audio_chunks   = [] # raw recorded chunks (mic thread writes)
 stop_mic       = threading.Event()
 sentence_queue = queue.Queue()
 records        = []
@@ -149,8 +149,8 @@ def pipeline_thread_fn():
         tts_ms = speak_tts(translation)
 
         total_ms = round(asr_ms+mt_ms+qe_ms+tts_ms,1)
-        wall_s   = round(time.time()-session_start,2)
-        ram      = get_ram_mb(); temp = get_temp()
+        wall_s = round(time.time()-session_start,2)
+        ram = get_ram_mb(); temp = get_temp()
 
         rec = dict(sentence_id=seg_idx, wall_clock_s=wall_s,
                    transcript=transcript, translation=translation,
@@ -163,17 +163,15 @@ def pipeline_thread_fn():
 
         with print_lock:
             print(f"\n  [{seg_idx}] {transcript!r}")
-            print(f"         → {translation!r}")
-            print(f"         QE={qe_score}  Total={total_ms:.0f}ms  RAM={ram}MB  Temp={temp}°C")
+            print(f" {translation!r}")
+            print(f"QE={qe_score}  Total={total_ms:.0f}ms  RAM={ram}MB  Temp={temp}°C")
         gc.collect()
 
 # Main
-print("\n"+"="*60)
 print(" Press ENTER to stop recording and process")
 print(" Ctrl+C at any time to cancel")
-print("="*60+"\n")
 
-mic_t      = threading.Thread(target=mic_thread_fn, daemon=True)
+mic_t = threading.Thread(target=mic_thread_fn, daemon=True)
 pipeline_t = threading.Thread(target=pipeline_thread_fn, daemon=True)
 mic_t.start()
 pipeline_t.start()
