@@ -8,20 +8,20 @@ import sounddevice as sd
 import soundfile as sf
 
 from phase3a_asr_module import WhisperASR
-from phase3a_mt_module  import OpusMT
-from phase3a_qe_module  import QualityEstimation
+from phase3a_mt_module import OpusMT
+from phase3a_qe_module import QualityEstimation
 
-OUTPUT_CSV  = os.path.expanduser("~/disso/results/demo_m2_log.csv")
+OUTPUT_CSV= os.path.expanduser("~/disso/results/demo_m2_log.csv")
 OUTPUT_JSON = os.path.expanduser("~/disso/results/demo_m2_log.json")
 os.makedirs(os.path.expanduser("~/disso/results"), exist_ok=True)
 
-SAMPLE_RATE      = 16000
-CHUNK_SIZE       = 1024
-SILENCE_THRESH   = 0.018
-SILENCE_GAP_SEC  = 1.0
+SAMPLE_RATE = 16000
+CHUNK_SIZE = 1024
+SILENCE_THRESH= 0.018
+SILENCE_GAP_SEC= 1.0
 MIN_SENTENCE_SEC = 0.8
-QE_THRESHOLD     = 0.90
-N_BEAMS          = 5
+QE_THRESHOLD= 0.90
+N_BEAMS = 5
 
 def get_ram_mb():
     try:
@@ -91,12 +91,11 @@ def split_sentences(chunks, sr=SAMPLE_RATE):
         dur = len(seg) / sr
         print(f"  [SPLIT] final segment: {dur:.2f}s")
         if dur >= MIN_SENTENCE_SEC: sentences.append(seg)
-
     return sentences
 
 # Record 
 audio_chunks = []
-stop_mic     = threading.Event()
+stop_mic = threading.Event()
 
 def mic_thread_fn():
     def callback(indata, frames, time_info, status):
@@ -117,10 +116,8 @@ print(f"[ASR] {msg}")
 if not ok: sys.exit("ASR failed")
 
 
-print("==================================================================================================")
 print(" Recording... speak your sentences.")
 print(" Press ENTER when done.")
-print("==================================================================================================")
 
 mic_t = threading.Thread(target=mic_thread_fn, daemon=True)
 mic_t.start()
@@ -234,24 +231,24 @@ for i in range(len(transcripts)):
     total_ms = round(asr_times[i] + mt1_times[i] + mt2_times[i] + qe_times[i] + tts_times[i], 1)
     wall += total_ms / 1000
     rec = dict(
-        sentence_id          = i + 1,
-        wall_clock_s         = round(wall, 2),
-        transcript           = transcripts[i],
-        trans_pass1          = translations_p1[i],
-        trans_final          = translations_final[i],
-        qe_score             = qe_scores[i],
+        sentence_id= i + 1,
+        wall_clock_s= round(wall, 2),
+        transcript= transcripts[i],
+        trans_pass1 = translations_p1[i],
+        trans_final = translations_final[i],
+        qe_score = qe_scores[i],
         correction_triggered = triggered[i],
-        asr_ms               = asr_times[i],
-        mt_pass1_ms          = mt1_times[i],
-        mt_pass2_ms          = mt2_times[i],
-        qe_ms                = qe_times[i],
-        tts_ms               = tts_times[i],
-        total_pipeline_ms    = total_ms,
-        ram_used_mb          = get_ram_mb(),
-        temp_c               = get_temp(),
+        asr_ms = asr_times[i],
+        mt_pass1_ms = mt1_times[i],
+        mt_pass2_ms = mt2_times[i],
+        qe_ms= qe_times[i],
+        tts_ms = tts_times[i],
+        total_pipeline_ms = total_ms,
+        ram_used_mb = get_ram_mb(),
+        temp_c= get_temp(),
     )
     records.append(rec)
-    print(f"  [{i+1}] Total={total_ms:.0f}ms | triggered={triggered[i]}")
+    print(f"[{i+1}] Total={total_ms:.0f}ms | triggered={triggered[i]}")
 
 for w in wav_files:
     try: os.remove(w)
