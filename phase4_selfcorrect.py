@@ -13,10 +13,10 @@ from sacrebleu import corpus_bleu, corpus_chrf
 
 FLORES_PATH  = "/home/zubair/disso/datasets/flores_test/samples.json"
 RESULTS_PATH = "/home/zubair/disso/results/grid_search_results.json"
-COLAB_PATH   = "/home/zubair/disso/results/colab_inputs.json"
+COLAB_PATH = "/home/zubair/disso/results/colab_inputs.json"
 
 
-# ── Grid parameters ───────────────────────────────────────────
+#Grid parameters
 THRESHOLDS = [0.75, 0.80, 0.85, 0.90]
 BEAM_SIZES = [3, 5, 10]
 
@@ -27,7 +27,7 @@ with open(FLORES_PATH) as f:
 samples = [{"id": s["id"], "src": s["source_en"], "ref": s["reference_es"]} for s in flores]
 print(f"Loaded {len(samples)} FLORES samples.")
 
-# ── PHASE 1: MT beam=1 baseline (run once, reuse across grid) ─
+# ─ PHASE 1: MT beam=1 baseline (run once, reuse across grid) ─
 print("\n=== Beam=1 baseline pass (shared across all grid runs) ===")
 mt = OpusMT()
 ok, msg = mt.load()
@@ -52,13 +52,13 @@ gc.collect()
 time.sleep(3)
 print("Baseline pass done.")
 
-refs    = [r["ref"] for r in base_results]
+refs= [r["ref"] for r in base_results]
 hyps_b1 = [r["mt_text_b1"] for r in base_results]
 bleu_baseline = round(corpus_bleu(hyps_b1, [refs]).score, 2)
 chrf_baseline = round(corpus_chrf(hyps_b1, [refs]).score * 100, 2)  # fix scale
 print(f"Baseline BLEU: {bleu_baseline}  ChrF: {chrf_baseline}")
 
-# ── PHASE 2: QE score all samples once ───────────────────────
+# ─ PHASE 2: QE score all samples once
 print("\n=== QE scoring all samples (shared) ===")
 gc.collect()
 time.sleep(3)
@@ -279,7 +279,7 @@ with open(COLAB_PATH, "w") as f:
     json.dump(colab_data, f, indent=2)
 print(f"Colab inputs saved to: {COLAB_PATH}")
 
-print("\n========== GRID SEARCH COMPLETE ==========")
+print("\n=== GRID SEARCH COMPLETE ===")
 print(
     f"{'Thresh':>8} {'Beams':>6} {'Trig%':>6} "
     f"{'BLEU-B':>8} {'BLEU-M1':>9} {'BLEU-M2':>9} {'BLEU-M3':>9} "
