@@ -15,11 +15,11 @@ FLORES_PATH  = "/home/zubair/disso/datasets/flores_test/samples.json"
 OUTPUT_PATH  = "/home/zubair/disso/results/best_config_hypotheses.json"
 
 THRESHOLD = 0.90
-N_BEAMS   = 5
+N_BEAMS= 5
 
 os.makedirs("/home/zubair/disso/results", exist_ok=True)
 
-# ── Load FLORES samples ──────────────────────────────────────
+# ─ Load FLORES samples
 with open(FLORES_PATH) as f:
     flores = json.load(f)
 samples = [{"id": s["id"], "src": s["source_en"], "ref": s["reference_es"]} for s in flores]
@@ -150,7 +150,6 @@ for r in records:
 qe2.cleanup(); del qe2
 mt2.cleanup(); del mt2
 gc.collect()
-
 #  Step 5: Sanity BLEU/ChrF check 
 refs     = [r["ref"]   for r in records]
 hyps_b1  = [r["mt_b1"] for r in records]
@@ -183,13 +182,13 @@ for name, bleu, chrf in [
 out = []
 for r in records:
     out.append({
-        "id":     r["id"],
-        "src":    r["src"],
-        "ref":    r["ref"],
-        "mt_b1":  r["mt_b1"],
-        "mt_m1":  r["mt_m1"],
-        "mt_m2":  r["mt_m2"],
-        "mt_m3":  r["mt_m3"],
+        "id":r["id"],
+        "src":r["src"],
+        "ref":r["ref"],
+        "mt_b1":r["mt_b1"],
+        "mt_m1":r["mt_m1"],
+        "mt_m2":r["mt_m2"],
+        "mt_m3":r["mt_m3"],
     })
 
 with open(OUTPUT_PATH, "w") as f:
