@@ -13,7 +13,7 @@ from sacrebleu import corpus_bleu, corpus_chrf
 FLORES_PATH  = "/home/zubair/disso/datasets/flores_test/samples.json"
 RESULTS_PATH = "/home/zubair/disso/results/cbs_expA_results.json"
 QE_THRESHOLD = 0.90
-N_BEAMS      = 5
+N_BEAMS= 5
 
 os.makedirs("/home/zubair/disso/results", exist_ok=True)
 
@@ -98,12 +98,12 @@ def run_cbs_qe(records, anchor_fn, boost):
         hyps.append(best)
     return hyps
 
-hyps_b1   = [r["mt_b1"] for r in records]
-hyps_2_0  = run_cbs_qe(records, extract_anchors_original, boost=2.0)
+hyps_b1 = [r["mt_b1"] for r in records]
+hyps_2_0 = run_cbs_qe(records, extract_anchors_original, boost=2.0)
 print("boost=2.0 done")
-hyps_1_5  = run_cbs_qe(records, extract_anchors_original, boost=1.5)
+hyps_1_5 = run_cbs_qe(records, extract_anchors_original, boost=1.5)
 print("boost=1.5 done")
-hyps_1_0  = run_cbs_qe(records, extract_anchors_original, boost=1.0)
+hyps_1_0= run_cbs_qe(records, extract_anchors_original, boost=1.0)
 print("boost=1.0 done")
 
 qe2.cleanup(); del qe2
@@ -116,31 +116,27 @@ def score(hyps):
     chrf = round(corpus_chrf(hyps, [refs]).score * 100, 2)
     return bleu, chrf
 
-bleu_b1, chrf_b1     = score(hyps_b1)
-bleu_20, chrf_20     = score(hyps_2_0)
-bleu_15, chrf_15     = score(hyps_1_5)
-bleu_10, chrf_10     = score(hyps_1_0)
+bleu_b1, chrf_b1= score(hyps_b1)
+bleu_20, chrf_20= score(hyps_2_0)
+bleu_15, chrf_15 = score(hyps_1_5)
+bleu_10, chrf_10 = score(hyps_1_0)
 
 print(f"\n{'Method':<25} {'BLEU':>8} {'ΔBLEU':>8} {'ChrF':>8} {'ΔChrF':>8}")
 print("─" * 58)
 for name, bleu, chrf in [
-    ("Baseline",          bleu_b1, chrf_b1),
-    ("CBS boost=2.0",     bleu_20, chrf_20),
-    ("CBS boost=1.5",     bleu_15, chrf_15),
+    ("Baseline",bleu_b1, chrf_b1),
+    ("CBS boost=2.0",bleu_20, chrf_20),
+    ("CBS boost=1.5",bleu_15, chrf_15),
     ("CBS boost=1.0",     bleu_10, chrf_10),
 ]:
     print(f"{name:<25} {bleu:>8.2f} {bleu-bleu_b1:>+8.2f} {chrf:>8.2f} {chrf-chrf_b1:>+8.2f}")
 
 results = {
-    "experiment": "A", "config": {"threshold": QE_THRESHOLD, "n_beams": N_BEAMS,
-                                   "triggered": len(triggered_ids)},
-    "baseline":    {"bleu": bleu_b1, "chrf": chrf_b1},
-    "boost_2_0":   {"bleu": bleu_20, "chrf": chrf_20,
-                    "bleu_delta": round(bleu_20-bleu_b1,2), "chrf_delta": round(chrf_20-chrf_b1,2)},
-    "boost_1_5":   {"bleu": bleu_15, "chrf": chrf_15,
-                    "bleu_delta": round(bleu_15-bleu_b1,2), "chrf_delta": round(chrf_15-chrf_b1,2)},
-    "boost_1_0":   {"bleu": bleu_10, "chrf": chrf_10,
-                    "bleu_delta": round(bleu_10-bleu_b1,2), "chrf_delta": round(chrf_10-chrf_b1,2)},
+    "experiment": "A", "config": {"threshold": QE_THRESHOLD, "n_beams": N_BEAMS,"triggered": len(triggered_ids)},
+    "baseline":{"bleu": bleu_b1, "chrf": chrf_b1},
+    "boost_2_0":{"bleu": bleu_20, "chrf": chrf_20,"bleu_delta": round(bleu_20-bleu_b1,2), "chrf_delta": round(chrf_20-chrf_b1,2)},
+    "boost_1_5":{"bleu": bleu_15, "chrf": chrf_15,"bleu_delta": round(bleu_15-bleu_b1,2), "chrf_delta": round(chrf_15-chrf_b1,2)},
+    "boost_1_0":{"bleu": bleu_10, "chrf": chrf_10,"bleu_delta": round(bleu_10-bleu_b1,2), "chrf_delta": round(chrf_10-chrf_b1,2)},
 }
 with open(RESULTS_PATH, "w") as f:
     json.dump(results, f, indent=2)
