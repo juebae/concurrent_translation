@@ -1,6 +1,6 @@
 """
 phase4_cbs_expC.py
-Exp C: Hybrid — strict CBS candidates merged with unconstrained beams,
+Exp C: Hybrid - strict CBS candidates merged with unconstrained beams,
 MBR selects over the combined pool.
 tau=0.90, N=5
 """
@@ -14,7 +14,7 @@ from sacrebleu import corpus_bleu, corpus_chrf
 FLORES_PATH  = "/home/zubair/disso/datasets/flores_test/samples.json"
 RESULTS_PATH = "/home/zubair/disso/results/cbs_expC_results.json"
 QE_THRESHOLD = 0.90
-N_BEAMS      = 5
+N_BEAMS = 5
 
 os.makedirs("/home/zubair/disso/results", exist_ok=True)
 
@@ -91,7 +91,7 @@ for r in records:
 print("Beams done.")
 
 print("\n=== Running Exp C (hybrid CBS+MBR) ===")
-# No QE needed for selection — MBR is model-free
+# No QE needed for selection - MBR is model-free
 
 hyps_b1   = [r["mt_b1"] for r in records]
 hyps_mbr  = []   # plain MBR reference
@@ -129,9 +129,9 @@ def score(hyps):
     chrf = round(corpus_chrf(hyps, [refs]).score * 100, 2)
     return bleu, chrf
 
-bleu_b1, chrf_b1   = score(hyps_b1)
-bleu_mbr, chrf_mbr = score(hyps_mbr)
-bleu_c,   chrf_c   = score(hyps_expC)
+bleu_b1, chrf_b1 = score(hyps_b1)
+bleu_mbr,chrf_mbr = score(hyps_mbr)
+bleu_c,chrf_c = score(hyps_expC)
 
 print(f"\n{'Method':<30} {'BLEU':>8} {'ΔBLEU':>8} {'ChrF':>8} {'ΔChrF':>8}")
 print("─" * 62)
