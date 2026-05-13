@@ -13,7 +13,7 @@ from sacrebleu import corpus_bleu, corpus_chrf
 FLORES_PATH  = "/home/zubair/disso/datasets/flores_test/samples.json"
 RESULTS_PATH = "/home/zubair/disso/results/cbs_expB_results.json"
 QE_THRESHOLD = 0.90
-N_BEAMS      = 5
+N_BEAMS= 5
 
 os.makedirs("/home/zubair/disso/results", exist_ok=True)
 
