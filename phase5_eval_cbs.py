@@ -9,12 +9,11 @@ FLORES_PATH  = "/home/zubair/disso/datasets/flores_test/samples.json"
 RESULTS_PATH = "/home/zubair/disso/results/cbs_experiments_results.json"
 
 QE_THRESHOLD = 0.90
-N_BEAMS      = 5
+N_BEAMS = 5
 
 os.makedirs("/home/zubair/disso/results", exist_ok=True)
 
 # Anchor extractors
-
 SPANISH_STOPWORDS = {
     "el","la","los","las","un","una","de","en","y","a","que","es",
     "se","no","por","con","para","su","al","del","lo","le","les",
@@ -106,7 +105,6 @@ triggered_ids = {r["id"] for r in records
 print(f"Triggered: {len(triggered_ids)}/{len(records)} ({100*len(triggered_ids)/len(records):.1f}%)")
 
 # Phase 3: Generate N beams (reused across all experiments)
-
 print(f"\n=== Generating {N_BEAMS} beams ===")
 mt2 = OpusMT()
 ok, msg = mt2.load(); print(msg)
@@ -116,9 +114,7 @@ for r in records:
         r["beams"] = []; continue
     ok2, beams = mt2.translate_nbest(r["src"], num_beams=N_BEAMS)
     r["beams"] = beams if (ok2 and beams) else [r["mt_b1"]]
-
 print("Beam generation done.")
-
 # Phase 4: Run all experiments
 
 print("\n=== Running CBS experiments ===")
@@ -127,12 +123,7 @@ qe2 = QualityEstimation()
 ok, msg = qe2.load(); print(msg)
 
 def run_cbs(records, anchor_fn, boost, use_hybrid=False, label=""):
-    """
-    Run CBS for one configuration.
-    anchor_fn  : function(mt_b1) -> list of anchor strings
-    boost      : float, logit boost for constrained beams
-    use_hybrid : if True, merge CBS+unconstrained beams into MBR pool
-    """
+
     hyps = []
     for r in records:
         cond = r["id"] in triggered_ids and r["beams"]
@@ -177,10 +168,10 @@ hyps_expA_1_5 = run_cbs(records, extract_anchors_original, boost=1.5, label="Exp
 hyps_expA_1_0 = run_cbs(records, extract_anchors_original, boost=1.0, label="ExpA boost=1.0")
 
 # Experiment B — strict anchors, best boost from Exp A
-hyps_expB     = run_cbs(records, extract_anchors_strict,   boost=1.5, label="ExpB strict+1.5")
+hyps_expB = run_cbs(records, extract_anchors_strict,boost=1.5, label="ExpB strict+1.5")
 
 # Experiment C — hybrid CBS+MBR pool
-hyps_expC     = run_cbs(records, extract_anchors_strict,   boost=1.5,
+hyps_expC = run_cbs(records, extract_anchors_strict,boost=1.5,
                         use_hybrid=True, label="ExpC hybrid")
 
 qe2.cleanup(); del qe2
@@ -189,7 +180,7 @@ gc.collect()
 
 # Metrics
 
-refs    = [r["ref"]   for r in records]
+refs = [r["ref"]   for r in records]
 hyps_b1 = [r["mt_b1"] for r in records]
 
 def score(hyps, refs):
@@ -197,24 +188,24 @@ def score(hyps, refs):
     chrf = round(corpus_chrf(hyps, [refs]).score * 100, 2)
     return bleu, chrf
 
-bleu_b1, chrf_b1       = score(hyps_b1,       refs)
-bleu_mbr, chrf_mbr     = score(hyps_mbr,       refs)
-bleu_a20, chrf_a20     = score(hyps_expA_2_0,  refs)
-bleu_a15, chrf_a15     = score(hyps_expA_1_5,  refs)
-bleu_a10, chrf_a10     = score(hyps_expA_1_0,  refs)
-bleu_b,   chrf_b       = score(hyps_expB,      refs)
-bleu_c,   chrf_c       = score(hyps_expC,      refs)
+bleu_b1, chrf_b1= score(hyps_b1,refs)
+bleu_mbr, chrf_mbr = score(hyps_mbr,refs)
+bleu_a20, chrf_a20= score(hyps_expA_2_0,refs)
+bleu_a15, chrf_a15 = score(hyps_expA_1_5,refs)
+bleu_a10, chrf_a10= score(hyps_expA_1_0, refs)
+bleu_b, chrf_b = score(hyps_expB, refs)
+bleu_c, chrf_c = score(hyps_expC,refs)
 
 # Results 
 
 rows = [
-    ("Baseline (B1)",            bleu_b1,  chrf_b1),
-    ("MBR (M2, reference)",      bleu_mbr, chrf_mbr),
-    ("CBS ExpA boost=2.0",       bleu_a20, chrf_a20),
-    ("CBS ExpA boost=1.5",       bleu_a15, chrf_a15),
-    ("CBS ExpA boost=1.0",       bleu_a10, chrf_a10),
-    ("CBS ExpB strict+1.5",      bleu_b,   chrf_b),
-    ("CBS ExpC hybrid MBR+CBS",  bleu_c,   chrf_c),
+    ("Baseline (B1)", bleu_b1,  chrf_b1),
+    ("MBR (M2, reference)",  bleu_mbr, chrf_mbr),
+    ("CBS ExpA boost=2.0",bleu_a20, chrf_a20),
+    ("CBS ExpA boost=1.5", bleu_a15, chrf_a15),
+    ("CBS ExpA boost=1.0",bleu_a10, chrf_a10),
+    ("CBS ExpB strict+1.5", bleu_b, chrf_b),
+    ("CBS ExpC hybrid MBR+CBS",  bleu_c,chrf_c),
 ]
 
 print(f"\n{'Method':<30} {'BLEU':>8} {'ΔBLEU':>8} {'ChrF':>8} {'ΔChrF':>8}")
