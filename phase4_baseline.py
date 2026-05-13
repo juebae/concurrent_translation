@@ -26,7 +26,7 @@ with open(FLEURS_PATH) as f:
 with open(FLORES_PATH) as f:
     flores = {s["id"]: s for s in json.load(f)}
 
-# ── PHASE 1: ASR ─────────────────────────────────────────────
+
 print("=== PHASE 1: ASR ===")
 asr = WhisperASR(model_size="tiny")
 ok, msg = asr.load()
